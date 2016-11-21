@@ -2,13 +2,14 @@ var helper = require('helper');
 // import modules
 require('prototype.spawn')();
 var vars = require('vars');
-var newCostMatrix = require('newCostMatrix'); 
+ 
 var roleHarvester = require('role.harvester');
 var roleUpgrader = require('role.upgrader');
 var roleBuilder = require('role.builder');
 var roleRepairer = require('role.repairer');
 var roleWallRepairer = require('role.wallRepairer');
 var roleTowerfiller = require('role.Towerfiller');
+var newCostMatrix = require('newCostMatrix');
 var roleStorer = require('role.storer');
 
 module.exports.loop = function () {
