@@ -8,76 +8,76 @@
  */
 
 module.exports = {
-  run: function( creep ) {
+    run: function (creep) {
 
-    // Setting the working variable so the creep focus
-    // on getting the ressource or returning it.
-    if ( creep.memory.working && creep.carry.energy == 0 ) {
-        creep.memory.working = false;
-    }
-
-    if ( ! creep.memory.working && creep.carry.energy == creep.carryCapacity ) {
-        creep.memory.working = true;
-        creep.memory.targetContainer = false;
-    }
-
-    if ( creep.memory.working ) {
-
-        // Bring the resources to the storage.
-        var theStorage = creep.pos.findClosestByRange(FIND_MY_STRUCTURES, {
-            filter: (structure) => {
-                return (structure.structureType == STRUCTURE_STORAGE );
-            }
-        });
-
-        if ( creep.transfer( theStorage, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-            creep.moveTo( theStorage );
+        // Setting the working variable so the creep focus
+        // on getting the ressource or returning it.
+        if (creep.memory.working && creep.carry.energy == 0) {
+            creep.memory.working = false;
         }
 
-    } else {
+        if (!creep.memory.working && creep.carry.energy == creep.carryCapacity) {
+            creep.memory.working = true;
+            creep.memory.targetContainer = false;
+        }
 
-        // If the creep have a target.
-        if ( creep.memory.targetContainer ) {
+        if (creep.memory.working) {
 
-            // Go to the container.
-            var theContainer = Game.getObjectById( creep.memory.targetContainer );
+            // Bring the resources to the storage.
+            var theStorage = creep.pos.findClosestByRange(FIND_MY_STRUCTURES, {
+                filter: (structure) => {
+                    return (structure.structureType == STRUCTURE_STORAGE);
+                }
+            });
 
-            if ( creep.withdraw( theContainer, RESOURCE_ENERGY ) == ERR_NOT_IN_RANGE ) {
-                creep.moveTo( theContainer );
+            if (creep.transfer(theStorage, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                creep.moveTo(theStorage);
             }
 
         } else {
 
-            // Find the container with the most energy.
-            var target = creep.room.find( FIND_STRUCTURES, {
-                filter: (structure) => {
-                    return (structure.structureType == STRUCTURE_CONTAINER );
-                }
-            });
+            // If the creep have a target.
+            if (creep.memory.targetContainer) {
 
-            if ( target.length ) {
+                // Go to the container.
+                var theContainer = Game.getObjectById(creep.memory.targetContainer);
 
-                var allContainer = [];
-
-                // Calculate the percentage of energy in each container.
-                for ( var i = 0; i < target.length; i++ ) {
-
-                    allContainer.push( { energyPercent: ( ( target[i].store.energy / target[i].storeCapacity ) * 100 ), id: target[i].id } );
-
+                if (creep.withdraw(theContainer, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(theContainer);
                 }
 
-                // Get the container containing the most energy.
-                var highestContainer = _.max( allContainer, function( container ){ return container.energyPercent; });
+            } else {
 
-                console.log( 'Going for the container id "' + highestContainer.id + '" at ' + highestContainer.energyPercent + '% full.' );
+                // Find the container with the most energy.
+                var target = creep.room.find(FIND_STRUCTURES, {
+                    filter: (structure) => {
+                        return (structure.structureType == STRUCTURE_CONTAINER);
+                    }
+                });
 
-                // set the target in memory so the creep dosen't
-                // change target in the middle of the room.
-                creep.memory.targetContainer = highestContainer.id;
+                if (target.length) {
 
+                    var allContainer = [];
+
+                    // Calculate the percentage of energy in each container.
+                    for (var i = 0; i < target.length; i++) {
+
+                        allContainer.push({ energyPercent: ((target[i].store.energy / target[i].storeCapacity) * 100), id: target[i].id });
+
+                    }
+
+                    // Get the container containing the most energy.
+                    var highestContainer = _.max(allContainer, function (container) { return container.energyPercent; });
+
+                    console.log('Going for the container id "' + highestContainer.id + '" at ' + highestContainer.energyPercent + '% full.');
+
+                    // set the target in memory so the creep dosen't
+                    // change target in the middle of the room.
+                    creep.memory.targetContainer = highestContainer.id;
+
+                }
             }
         }
     }
-  }
 
 };

@@ -11,7 +11,7 @@ var roleUpgrader = require('role.upgrader');
 
 module.exports = {
     // a function to run the logic for this role
-    run: function(creep) {
+    run: function (creep) {
         // if creep is trying to complete a constructionSite but has no energy left
         if (creep.memory.working == true && creep.carry.energy == 0) {
             // switch state
@@ -27,10 +27,10 @@ module.exports = {
         // if creep is supposed to complete a constructionSite
         if (creep.memory.working == true) {
             // build roads last
-            var constructionSite = creep.pos.findClosestByPath(FIND_CONSTRUCTION_SITES, {filter: (s) => s.structureType != STRUCTURE_ROAD});
+            var constructionSite = creep.pos.findClosestByPath(FIND_CONSTRUCTION_SITES, { filter: (s) => s.structureType != STRUCTURE_ROAD });
             if (!constructionSite) {
-               // find closest constructionSite
-               var constructionSite = creep.pos.findClosestByPath(FIND_CONSTRUCTION_SITES);
+                // find closest constructionSite
+                var constructionSite = creep.pos.findClosestByPath(FIND_CONSTRUCTION_SITES);
             }
 
             // if one is found
@@ -41,7 +41,7 @@ module.exports = {
                     // move towards the constructionSite                    
                     creep.moveTo(constructionSite);
                 }
-            }            
+            }
             // if no constructionSite is found
             else {
                 // go upgrading the controller

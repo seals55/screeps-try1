@@ -11,7 +11,7 @@ var roleBuilder = require('role.builder');
 
 module.exports = {
     // a function to run the logic for this role
-    run: function(creep) {
+    run: function (creep) {
         // if creep is trying to repair something but has no energy left
         if (creep.memory.working == true && creep.carry.energy == 0) {
             // switch state
@@ -34,7 +34,7 @@ module.exports = {
             var target = undefined;
 
             // loop with increasing percentages
-            for (let percentage = 0.0001; percentage <= 1; percentage = percentage + 0.0001){
+            for (let percentage = 0.0001; percentage <= 1; percentage = percentage + 0.0001) {
                 // find a wall with less than percentage hits
 
                 // for some reason this doesn't work
@@ -45,7 +45,7 @@ module.exports = {
                 // so we have to use this
                 target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
                     filter: (s) => s.structureType == STRUCTURE_WALL &&
-                                   s.hits / s.hitsMax < percentage
+                        s.hits / s.hitsMax < percentage
                 });
 
                 // if there is one

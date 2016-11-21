@@ -1,10 +1,10 @@
 var vars = require('vars');
 
 
-module.exports = function() {
+module.exports = function () {
     // create a new function for StructureSpawn
     StructureSpawn.prototype.createCustomCreep =
-        function(energy, roleName) {
+        function (energy, roleName) {
             // create a balanced body as big as possible with the given energy
             var numberOfParts = Math.floor(energy / 200);
             var body = [];

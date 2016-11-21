@@ -21,12 +21,12 @@ module.exports.loop = function () {
             if (vars.debug) { console.log('Clearing non-existing creep memory:', name); }
         }
     }
-         
-    for(var i in Game.spawns){
+
+    for (var i in Game.spawns) {
         var spawn = Game.spawns[i];
         newCostMatrix.run(spawn);
     }
-        
+
     // for every creep name in Game.creeps
     for (let name in Game.creeps) {
         // get the creep object
@@ -64,13 +64,13 @@ module.exports.loop = function () {
 
     for (var name in Game.rooms) {
         // console.log(name);
-        var MyRoom = Game.rooms[name];        
+        var MyRoom = Game.rooms[name];
         //Spawner:
-        var spawns = MyRoom.find(FIND_MY_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_SPAWN}); 
+        var spawns = MyRoom.find(FIND_MY_STRUCTURES, { filter: (s) => s.structureType == STRUCTURE_SPAWN });
         for (var spawn in spawns) {
 
-            var towers = MyRoom.find(FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_TOWER});
-            var storages = MyRoom.find(FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_STORAGE});
+            var towers = MyRoom.find(FIND_STRUCTURES, { filter: (s) => s.structureType == STRUCTURE_TOWER });
+            var storages = MyRoom.find(FIND_STRUCTURES, { filter: (s) => s.structureType == STRUCTURE_STORAGE });
 
             if (vars.debug) { console.log("Room: " + MyRoom + " : " + "Number of Towers: " + towers.length + " : " + "Number of Storage: " + storages.length); }
             for (let tower of towers) {
@@ -79,11 +79,11 @@ module.exports.loop = function () {
                     tower.attack(closestHostile);
                 } else {
                     // only repair if there are no enemies
-                    var closestDamagedStructure = tower.pos.findClosestByRange(FIND_STRUCTURES, {filter: (structure) => structure.hits < structure.hitsMax});
-                    if(closestDamagedStructure) {
-                       tower.repair(closestDamagedStructure);
+                    var closestDamagedStructure = tower.pos.findClosestByRange(FIND_STRUCTURES, { filter: (structure) => structure.hits < structure.hitsMax });
+                    if (closestDamagedStructure) {
+                        tower.repair(closestDamagedStructure);
                     }
-                }               
+                }
             }
         }
     }
