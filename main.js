@@ -17,6 +17,7 @@ module.exports.loop = function () {
         if (Game.creeps[name] == undefined) {
             // if not, delete the memory entry
             delete Memory.creeps[name];
+            console.log('Clearing non-existing creep memory:', name);
         }
     }
     
