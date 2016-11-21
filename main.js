@@ -13,10 +13,8 @@ var roleStorer = require('role.storer');
 
 module.exports.loop = function () {
     // check for memory entries of died creeps by iterating over Memory.creeps
-    for (let name in Memory.creeps) {
-        // and checking if the creep is still alive
-        if (Game.creeps[name] == undefined) {
-            // if not, delete the memory entry
+    for (var name in Memory.creeps) {
+        if (!Game.creeps[name]) {
             delete Memory.creeps[name];
             if (vars.debug) { console.log('Clearing non-existing creep memory:', name); }
         }
