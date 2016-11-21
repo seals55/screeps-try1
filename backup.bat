@@ -13,6 +13,7 @@ echo %datetime%
 
 REM Move all matching files to destination folder renaming with date/time stamp
 echo Running ""%Zip%" a -tgzip "%DestDir%\SCREEPS_DB_%datetime%.%ZipFilter%" "%BaseDir%\*.%ExtFilter%""
+"%Zip%" a -tgzip "%DestDir%\SCREEPS_DB_%datetime%.%ZipFilter%" "%BaseDir%\*.%ExtFilter%"
 
 REM Only keep 30 newest files in destination folder
-for /F "tokens=* skip=30" %%A in ('dir /b /a-d /tc /o-d "%DestDir%\*.%ZipFilter%"') do del "%DestDir%\%%~A"
+rem for /F "tokens=* skip=30" %%A in ('dir /b /a-d /tc /o-d "%DestDir%\*.%ZipFilter%"') do del "%DestDir%\%%~A"
