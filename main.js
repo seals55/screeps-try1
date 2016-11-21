@@ -2,7 +2,6 @@ var helper = require('helper');
 // import modules
 require('prototype.spawn')();
 var vars = require('vars');
- 
 var roleHarvester = require('role.harvester');
 var roleUpgrader = require('role.upgrader');
 var roleBuilder = require('role.builder');
