@@ -1,3 +1,4 @@
+var helper = require('helper');
 // import modules
 require('prototype.spawn')();
 var vars = require('vars');
