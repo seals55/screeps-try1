@@ -21,12 +21,12 @@ module.exports.loop = function () {
             if (vars.debug) { console.log('Clearing non-existing creep memory:', name); }
         }
     }
-    
-    for(var i in Game.spawns) {
+         
+    for(var i in Game.spawns){
         var spawn = Game.spawns[i];
         newCostMatrix.run(spawn);
     }
-
+        
     // for every creep name in Game.creeps
     for (let name in Game.creeps) {
         // get the creep object
