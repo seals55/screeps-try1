@@ -12,7 +12,7 @@ set datetime=%date:~-4%_%date:~-7,2%_%date:~-10,2%_%time:~0,2%_%time:~3,2%_%time
 echo %datetime%
 
 REM Move all matching files to destination folder renaming with date/time stamp
-"%Zip%" a -tgzip "%DestDir%\PRI_RSA_Audit_Text_File_%datetime%.%ZipFilter%" "%BaseDir%\*.%ExtFilter%"
+"%Zip%" a -tgzip "%DestDir%\SCREEPS_DB_%datetime%.%ZipFilter%" "%BaseDir%\*.%ExtFilter%"
 del "%BaseDir%\*.%ExtFilter%" /y
 
 REM Only keep 30 newest files in destination folder
