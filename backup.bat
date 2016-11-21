@@ -1,7 +1,7 @@
 @echo off
 
 REM Specify folders and files to operate on
-set BaseDir=C:\Users\csull\AppData\Local\Screeps
+set BaseDir=C:\Users\csull\AppData\Local\Screeps\scripts\otherkev_duckdns_org___21025\screeps-try1
 set DestDir=D:\ScreepsBackup
 set ExtFilter=js
 set ZipFilter=gz
