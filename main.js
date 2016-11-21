@@ -89,13 +89,6 @@ module.exports.loop = function () {
     }
 
 
-    // setup some minimum numbers for different roles
-    //var minimumNumberOfHarvesters = 4;
-    //var minimumNumberOfUpgraders = 2;
-    //var minimumNumberOfBuilders = 2;
-    //var minimumNumberOfRepairers = 1;
-    //var minimumNumberOfWallRepairers = 0;
-
     // count the number of creeps alive for each role
     // _.sum will count the number of properties in Game.creeps filtered by the
     //  arrow function, which checks for the creep being a harvester
