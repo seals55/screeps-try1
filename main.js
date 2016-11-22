@@ -1,3 +1,4 @@
+//var vars = require('vars');
 var helper = require('helper');
 
 var roleMulti = require('role.multi');
@@ -13,6 +14,7 @@ var maxRepair = 1;
 var maxHarvester = 8;
 var maxUpgrader = 8;
 var debug = true;
+
 
 
 module.exports.loop = function() {
