@@ -20,8 +20,11 @@ module.exports.loop = function() {
         }
     }
 
-    console.log(vars.debug)
-    console.log(vars.maxMulti)
+    console.log(vars.debug);
+    console.log(vars.maxMulti);
+    console.log(vars.maxRepair);
+console.log(vars.maxHarvester);
+console.log(vars.maxUpgrader);
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////
     //Loop rooms
