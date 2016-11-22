@@ -70,7 +70,7 @@ var roleMulti = {
                 if (sourceFound == true) {
                     if (creep.harvest(sources[creep.memory.harSource]) == ERR_NOT_IN_RANGE) {
                         //helper.routeCreep(creep, sources[creep.memory.harSource]);
-			
+                        creep.moveTo(sources[creep.memory.harSource]);
                         //creep.say('move to ' + creep.memory.harSource)
                     }
                 } else {
@@ -84,7 +84,7 @@ var roleMulti = {
 
                 if (creep.withdraw(storage, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                     //helper.routeCreep(creep, storage);
-		    
+                        creep.moveTo(storage);
                     //creep.say('Storage')
                 }
             }
