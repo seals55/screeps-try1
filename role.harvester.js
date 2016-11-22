@@ -93,13 +93,22 @@ var roleMulti = {
             //////pos.findClosestByPath //creep.room.find
             var target = creep.pos.findClosestByRange(FIND_STRUCTURES, {
                 filter: (structure) => {
-                    return (structure.structureType == STRUCTURE_EXTENSION
-                        || structure.structureType == STRUCTURE_SPAWN
-                        || structure.structureType == STRUCTURE_CONTAINER
-                        || structure.structureType == STRUCTURE_TOWER)
-                        && (structure.energy < structure.energyCapacity);
+                    return (structure.structureType == STRUCTURE_TOWER)
+                        && (structure.energy + 800 < structure.energyCapacity);
                 }
             });
+            if (!target) {
+                var target = creep.pos.findClosestByRange(FIND_STRUCTURES, {
+                    filter: (structure) => {
+                        return (structure.structureType == STRUCTURE_EXTENSION
+                            || structure.structureType == STRUCTURE_SPAWN
+                            || structure.structureType == STRUCTURE_CONTAINER
+                            || structure.structureType == STRUCTURE_TOWER)
+                            && (structure.energy < structure.energyCapacity);
+                    }
+                });
+            }
+
 
             //structure.store[RESOURCE_ENERGY] < structure.storeCapacity
             if (target == null) {
