@@ -20,6 +20,8 @@ module.exports.loop = function() {
         }
     }
 
+    console.log(vars.debug)
+
     /////////////////////////////////////////////////////////////////////////////////////////////////////////
     //Loop rooms
     for (var rm in Game.rooms) {
