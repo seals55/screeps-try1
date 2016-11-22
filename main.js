@@ -71,7 +71,7 @@ module.exports.loop = function() {
             } else if (upgrader.length < maxUpgrader) {
                 var newName = spawn[0].createCreep(helper.calcBody(curRoom, 'role.upgrader'), undefined, { role: 'upgrader' });
                 if (_.isString(newName)) { console.log('Spawning new upgrader: ' + newName); }
-            } else if (scout.length < maxScout) {
+            } else if ((scout.length < maxScout) && (curMaxEnergy >= 800)) {
                 var newName = spawn[0].createCreep(helper.calcBody(curRoom, 'role.scout'), undefined, { role: 'scout' });
             }
 
