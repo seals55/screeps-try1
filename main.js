@@ -23,13 +23,14 @@ module.exports.loop = function() {
     var maxMulti = vars.maxMulti;
     var maxRepair = vars.maxRepair;
     var maxHarvester = vars.maxHarvester;
-    
+    var maxUpgrader = vars.maxUpgrader;
+
     if (vars.debug) {
         console.log(vars.debug);
         console.log(maxMulti);
         console.log(maxRepair);
         console.log(maxHarvester);
-        console.log(vars.maxUpgrader);
+        console.log(maxUpgrader);
     };
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -43,8 +44,8 @@ module.exports.loop = function() {
         var harvester = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester');
         var upgrader = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader');
 
-        if (multi.length < maxMulti || repair.length < maxRepair || harvester.length < maxHarvester || upgrader.length < vars.maxUpgrader) {
-            if (vars.debug) { console.log('Multi:' + multi.length + '/' + maxMulti + ', Harvester:' + harvester.length + '/' + maxHarvester + ', Repair:' + repair.length + '/' + maxRepair + ', Upgrader:' + upgrader.length + '/' + vars.maxUpgrader + ', Total Creeps:' + _.filter(Game.creeps).length); };
+        if (multi.length < maxMulti || repair.length < maxRepair || harvester.length < maxHarvester || upgrader.length < maxUpgrader) {
+            if (vars.debug) { console.log('Multi:' + multi.length + '/' + maxMulti + ', Harvester:' + harvester.length + '/' + maxHarvester + ', Repair:' + repair.length + '/' + maxRepair + ', Upgrader:' + upgrader.length + '/' + maxUpgrader + ', Total Creeps:' + _.filter(Game.creeps).length); };
         }
 
         if (multi.length < maxMulti) {
@@ -56,7 +57,7 @@ module.exports.loop = function() {
         } else if (repair.length < maxRepair) {
             var newName = spawn[0].createCreep(helper.calcBody(curRoom, 'role.repair'), undefined, { role: 'repair' });
             if (_.isString(newName)) { console.log('Spawning new repair: ' + newName); }
-        } else if (upgrader.length < vars.maxUpgrader) {
+        } else if (upgrader.length < maxUpgrader) {
             var newName = spawn[0].createCreep(helper.calcBody(curRoom, 'role.upgrader'), undefined, { role: 'upgrader' });
             if (_.isString(newName)) { console.log('Spawning new upgrader: ' + newName); }
         }
