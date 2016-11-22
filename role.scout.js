@@ -16,7 +16,7 @@ var roleScout = {
         console.log(creep.name + " room: '" + creep.room + "' | Wants Room: '" + moveToRoom + "'")
 
         //MOVE TO TARGET ROOM
-        if (creep.room != moveToRoom) {
+        if (creep.room[0] != moveToRoom) {
 
             // var route = Game.map.findRoute(creep.room, moveToRoom);
             // if (route.length > 0) {
