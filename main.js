@@ -9,7 +9,7 @@ var newCostMatrix = require('newCostMatrix');
 
 var tower = require('tower');
 
-module.exports.loop = function () {
+module.exports.loop = function() {
     //console.log('tick')
     var vars = require('vars');
 
@@ -43,10 +43,10 @@ module.exports.loop = function () {
         var upgrader = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader');
         var scout = _.filter(Game.creeps, (creep) => creep.memory.role == 'scout');
 
-        if (debug) { console.log('Multi: ' + multi.length + '/' + maxMulti + ', Harvester: ' + harvester.length + '/' + maxHarvester + ', Repair: ' + repair.length + '/' + maxRepair + ', Upgrader: ' + upgrader.length + '/' + maxUpgrader + ', Total Creeps: ' + _.filter(Game.creeps).length); };
+        if (debug) { console.log('Multi: ' + multi.length + '/' + maxMulti + ', Harvester: ' + harvester.length + '/' + maxHarvester + ', Repair: ' + repair.length + '/' + maxRepair + ', Upgrader: ' + upgrader.length + '/' + maxUpgrader + ', Scout: ' + scout.length + '/' + maxScout + ', Total Creeps: ' + _.filter(Game.creeps).length); };
 
         if (multi.length < maxMulti || repair.length < maxRepair || harvester.length < maxHarvester || upgrader.length < maxUpgrader) {
-            console.log('Multi: ' + multi.length + '/' + maxMulti + ', Harvester: ' + harvester.length + '/' + maxHarvester + ', Repair: ' + repair.length + '/' + maxRepair + ', Upgrader: ' + upgrader.length + '/' + maxUpgrader + ', Total Creeps: ' + _.filter(Game.creeps).length);
+            console.log('Multi: ' + multi.length + '/' + maxMulti + ', Harvester: ' + harvester.length + '/' + maxHarvester + ', Repair: ' + repair.length + '/' + maxRepair + ', Upgrader: ' + upgrader.length + '/' + maxUpgrader + ', Scout: ' + scout.length + '/' + maxScout + ', Total Creeps: ' + _.filter(Game.creeps).length);
         }
 
         if (multi.length < maxMulti) {
