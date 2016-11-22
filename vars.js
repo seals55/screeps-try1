@@ -11,6 +11,6 @@ define("debug", true);
 // setup some minimum numbers for different roles
 
 define("maxMulti", 0);
-define("maxRepair", 2);
-define("maxHarvester", 4);
-define("maxUpgrader", 4);
+define("maxRepair", 1);
+define("maxHarvester", 6);
+define("maxUpgrader", 6);
