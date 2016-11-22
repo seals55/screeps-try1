@@ -37,53 +37,56 @@ module.exports.loop = function() {
         console.log("Current Room: " + curRoom)
 
         var spawn = curRoom.find(FIND_STRUCTURES, { filter: { structureType: STRUCTURE_SPAWN } })
-        console.log("Spawn: " + spawn)
-        //newCostMatrix.run(spawn);
-        var multi = _.filter(Game.creeps, (creep) => creep.memory.role == 'multi');
-        var repair = _.filter(Game.creeps, (creep) => creep.memory.role == 'repair');
-        var harvester = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester');
-        var upgrader = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader');
-        var scout = _.filter(Game.creeps, (creep) => creep.memory.role == 'scout');
+        if (!spawn) {
 
-        if (debug) {
-            console.log('Multi: ' + multi.length + '/' + maxMulti + ', Harvester: ' + harvester.length + '/' + maxHarvester
-                + ', Repair: ' + repair.length + '/' + maxRepair + ', Upgrader: ' + upgrader.length + '/' + maxUpgrader
-                + ', Scout: ' + scout.length + '/' + maxScout + ', Total Creeps: ' + _.filter(Game.creeps).length);
-        };
+            //newCostMatrix.run(spawn);
 
-        if (multi.length < maxMulti || repair.length < maxRepair || harvester.length < maxHarvester || upgrader.length < maxUpgrader) {
-            console.log('Multi: ' + multi.length + '/' + maxMulti + ', Harvester: ' + harvester.length + '/' + maxHarvester
-                + ', Repair: ' + repair.length + '/' + maxRepair + ', Upgrader: ' + upgrader.length + '/' + maxUpgrader
-                + ', Scout: ' + scout.length + '/' + maxScout + ', Total Creeps: ' + _.filter(Game.creeps).length);
-        }
+            var multi = _.filter(Game.creeps, (creep) => creep.memory.role == 'multi');
+            var repair = _.filter(Game.creeps, (creep) => creep.memory.role == 'repair');
+            var harvester = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester');
+            var upgrader = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader');
+            var scout = _.filter(Game.creeps, (creep) => creep.memory.role == 'scout');
 
-        if (multi.length < maxMulti) {
-            var newName = spawn[0].createCreep(helper.calcBody(curRoom, 'role.multi'), undefined, { role: 'multi' });
-            if (_.isString(newName)) { console.log('Spawning new multi: ' + newName); }
-        } else if (scout.length < maxScout) {
-            var newName = spawn[0].createCreep(helper.calcBody(curRoom, 'role.scout'), undefined, { role: 'scout' });
-        } else if (harvester.length < maxHarvester) {
-            var newName = spawn[0].createCreep(helper.calcBody(curRoom, 'role.harvester'), undefined, { role: 'harvester' });
-            if (_.isString(newName)) { console.log('Spawning new harvester: ' + newName); }
-        } else if (repair.length < maxRepair) {
-            var newName = spawn[0].createCreep(helper.calcBody(curRoom, 'role.repair'), undefined, { role: 'repair' });
-            if (_.isString(newName)) { console.log('Spawning new repair: ' + newName); }
-        } else if (upgrader.length < maxUpgrader) {
-            var newName = spawn[0].createCreep(helper.calcBody(curRoom, 'role.upgrader'), undefined, { role: 'upgrader' });
-            if (_.isString(newName)) { console.log('Spawning new upgrader: ' + newName); }
-        }
+            if (debug) {
+                console.log('Multi: ' + multi.length + '/' + maxMulti + ', Harvester: ' + harvester.length + '/' + maxHarvester
+                    + ', Repair: ' + repair.length + '/' + maxRepair + ', Upgrader: ' + upgrader.length + '/' + maxUpgrader
+                    + ', Scout: ' + scout.length + '/' + maxScout + ', Total Creeps: ' + _.filter(Game.creeps).length);
+            };
+
+            if (multi.length < maxMulti || repair.length < maxRepair || harvester.length < maxHarvester || upgrader.length < maxUpgrader) {
+                console.log('Multi: ' + multi.length + '/' + maxMulti + ', Harvester: ' + harvester.length + '/' + maxHarvester
+                    + ', Repair: ' + repair.length + '/' + maxRepair + ', Upgrader: ' + upgrader.length + '/' + maxUpgrader
+                    + ', Scout: ' + scout.length + '/' + maxScout + ', Total Creeps: ' + _.filter(Game.creeps).length);
+            }
+
+            if (multi.length < maxMulti) {
+                var newName = spawn[0].createCreep(helper.calcBody(curRoom, 'role.multi'), undefined, { role: 'multi' });
+                if (_.isString(newName)) { console.log('Spawning new multi: ' + newName); }
+            } else if (scout.length < maxScout) {
+                var newName = spawn[0].createCreep(helper.calcBody(curRoom, 'role.scout'), undefined, { role: 'scout' });
+            } else if (harvester.length < maxHarvester) {
+                var newName = spawn[0].createCreep(helper.calcBody(curRoom, 'role.harvester'), undefined, { role: 'harvester' });
+                if (_.isString(newName)) { console.log('Spawning new harvester: ' + newName); }
+            } else if (repair.length < maxRepair) {
+                var newName = spawn[0].createCreep(helper.calcBody(curRoom, 'role.repair'), undefined, { role: 'repair' });
+                if (_.isString(newName)) { console.log('Spawning new repair: ' + newName); }
+            } else if (upgrader.length < maxUpgrader) {
+                var newName = spawn[0].createCreep(helper.calcBody(curRoom, 'role.upgrader'), undefined, { role: 'upgrader' });
+                if (_.isString(newName)) { console.log('Spawning new upgrader: ' + newName); }
+            }
 
 
-        //if all creeps died, spawn the worst possible one to get things going again
-        if (_.filter(Game.creeps) == null) {
-            var newName = spawn[0].createCreep([MOVE, WORK, CARRY], undefined, { role: 'multi' });
-            if (_.isString(newName)) { console.log('Spawning new multi: ' + newName); }
-        }
+            //if all creeps died, spawn the worst possible one to get things going again
+            if (_.filter(Game.creeps) == null) {
+                var newName = spawn[0].createCreep([MOVE, WORK, CARRY], undefined, { role: 'multi' });
+                if (_.isString(newName)) { console.log('Spawning new multi: ' + newName); }
+            }
 
-        var towers = curRoom.find(FIND_MY_STRUCTURES, { filter: { structureType: STRUCTURE_TOWER } });
-        if (towers != undefined) {
-            for (i = 0; i < towers.length; i++) {
-                tower.run(towers[i]);
+            var towers = curRoom.find(FIND_MY_STRUCTURES, { filter: { structureType: STRUCTURE_TOWER } });
+            if (towers != undefined) {
+                for (i = 0; i < towers.length; i++) {
+                    tower.run(towers[i]);
+                }
             }
         }
     }
