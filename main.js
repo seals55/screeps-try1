@@ -37,7 +37,7 @@ module.exports.loop = function() {
 
         var spawn = curRoom.find(FIND_STRUCTURES, { filter: { structureType: STRUCTURE_SPAWN } })
 
-        console.log("Current Room: '" + curRoom.name + "' | " + "Spawn: '" + spawn + "' | " + "Energy: '" + curRoom.energyCapacityAvailable + "'");
+        console.log("Current Room: '" + curRoom + "' | " + "Spawn: '" + spawn + "' | " + "Energy: '" + curRoom.energyCapacityAvailable + "'");
 
         if (spawn[0] != null) {
 
