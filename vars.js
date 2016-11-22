@@ -1,5 +1,6 @@
 function define(name, value) {
-    
+    name.value = undefined;
+
     Object.defineProperty(exports, name, {
         value: value,
         enumerable: true
