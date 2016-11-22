@@ -16,7 +16,7 @@ module.exports.loop = function() {
     var maxRepair = 1;
     var maxHarvester = 6;
     var maxUpgrader = 5;
-    var maxScout = 0;
+    var maxScout = 1;
     var debug = vars.debug;
 
     for (var name in Memory.creeps) {
@@ -34,10 +34,12 @@ module.exports.loop = function() {
     //Loop rooms
     for (var rm in Game.rooms) {
         var curRoom = Game.rooms[rm]
+
         var spawn = curRoom.find(FIND_STRUCTURES, { filter: { structureType: STRUCTURE_SPAWN } })
+
         console.log("Current Room: '" + curRoom + "' | " + "Spawn: '" + spawn + "' | " + "Energy: '" + curRoom.energyCapacityAvailable + "'");
 
-        if (spawn) {
+        if (spawn[0] != null) {
 
             //newCostMatrix.run(spawn);
 
