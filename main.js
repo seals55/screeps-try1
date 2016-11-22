@@ -29,13 +29,13 @@ module.exports.loop = function() {
 
 
 
-    if (debug) {
-        console.log(debug);
-        console.log(maxMulti);
-        console.log(maxRepair);
-        console.log(maxHarvester);
-        console.log(maxUpgrader);
-    };
+    // if (debug) {
+    //     console.log(debug);
+    //     console.log(maxMulti);
+    //     console.log(maxRepair);
+    //     console.log(maxHarvester);
+    //     console.log(maxUpgrader);
+    // };
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////
     //Loop rooms

@@ -6,7 +6,9 @@
  * var mod = require('tower');
  * mod.thing == 'a thing'; // true
  */
-var vars = require('vars');
+//var vars = require('vars');
+var debug = true;
+
 
 var tower = {
 
