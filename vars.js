@@ -7,9 +7,8 @@ function define(name, value) {
     });
 }
 
-
-define("debug", false);
-//define("debug", true);
+//define("debug", false);
+define("debug", true);
 
 // setup some minimum numbers for different roles
 // define("maxMulti", 0);
