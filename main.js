@@ -26,7 +26,7 @@ module.exports.loop = function () {
     }
 
     if (debug) {
-        console.log("Debug: " + vars.debug + " : " + "maxMulti: " + vars.maxMulti + " : " + "maxRepair: " + vars.maxRepair + " : " + "maxHarvester:" + vars.maxHarvester + " : " + "maxUpgrader:" + vars.maxUpgrader);
+        console.log("Debug: " + debug + " : " + "maxMulti: " + maxMulti + " : " + "maxRepair: " + maxRepair + " : " + "maxHarvester:" + maxHarvester + " : " + "maxUpgrader:" + maxUpgrader);
     };
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -41,7 +41,7 @@ module.exports.loop = function () {
         var upgrader = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader');
 
         if (multi.length < maxMulti || repair.length < maxRepair || harvester.length < maxHarvester || upgrader.length < maxUpgrader) {
-            if (debug) { console.log('Multi:' + multi.length + '/' + maxMulti + ', Harvester:' + harvester.length + '/' + maxHarvester + ', Repair:' + repair.length + '/' + maxRepair + ', Upgrader:' + upgrader.length + '/' + maxUpgrader + ', Total Creeps:' + _.filter(Game.creeps).length); };
+            if (debug) { console.log('Multi: ' + multi.length + '/' + maxMulti + ', Harvester: ' + harvester.length + '/' + maxHarvester + ', Repair: ' + repair.length + '/' + maxRepair + ', Upgrader: ' + upgrader.length + '/' + maxUpgrader + ', Total Creeps: ' + _.filter(Game.creeps).length); };
         }
 
         if (multi.length < maxMulti) {
