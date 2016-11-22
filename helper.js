@@ -48,8 +48,7 @@ module.exports = {
             // lvl 8: 3900
             var bodyParts = ''
             var curMaxEnergy = this.maxEnergy(curRoom);
-            //var curMaxEnergy = curRoom.energyCapacityAvailable
-            console.log('Energy: ' + curMaxEnergy)
+	        //console.log('Energy: ' +curMaxEnergy)
             var roleBodys = [
                 ['role.multi', 300, [MOVE, MOVE, WORK, CARRY, CARRY]],
                 ['role.multi', 550, [MOVE, MOVE, MOVE, WORK, WORK, WORK, CARRY, CARRY]],
