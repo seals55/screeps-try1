@@ -1,4 +1,3 @@
-var vars = require('vars');
 var helper = require('helper');
 
 var roleMulti = require('role.multi');
@@ -11,6 +10,7 @@ var tower = require('tower');
 
 module.exports.loop = function () {
     //console.log('tick')
+    var vars = require('vars');
 
     var maxMulti = vars.maxMulti;
     var maxRepair = vars.maxRepair;
