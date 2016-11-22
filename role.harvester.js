@@ -97,51 +97,52 @@ var roleMulti = {
                         && (structure.energy + 800 < structure.energyCapacity);
                 }
             });
-        }
-        if (!target) {
-            var target = creep.pos.findClosestByRange(FIND_STRUCTURES, {
-                filter: (structure) => {
-                    return (structure.structureType == STRUCTURE_EXTENSION
-                        || structure.structureType == STRUCTURE_SPAWN
-                        || structure.structureType == STRUCTURE_CONTAINER)
-                        && (structure.energy < structure.energyCapacity);
-                }
-            });
-        }
-        if (!target) {
-            var target = creep.pos.findClosestByRange(FIND_STRUCTURES, {
-                filter: (structure) => {
-                    return (structure.structureType == STRUCTURE_TOWER)
-                        && (structure.energy < structure.energyCapacity)
-
-                }
-            });
-        }
-        console.log("Harvester target: " + target)
-
-        //structure.store[RESOURCE_ENERGY] < structure.storeCapacity
-        if (target == null) {
-            target = creep.pos.findClosestByRange(FIND_STRUCTURES, { filter: (structure) => { return structure.structureType == STRUCTURE_STORAGE && _.sum(structure.store) < structure.storeCapacity; } });
-        }
-        if (target != null) {
-            /////////////////////////////////////////////////////////////////////////////////////////////////////////
-            //Structures found, deposit energy
-            if (creep.transfer(target, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                creep.moveTo(target);
+            console.log("Harvester target: " + target)
+            if (!target) {
+                var target = creep.pos.findClosestByRange(FIND_STRUCTURES, {
+                    filter: (structure) => {
+                        return (structure.structureType == STRUCTURE_EXTENSION
+                            || structure.structureType == STRUCTURE_SPAWN
+                            || structure.structureType == STRUCTURE_CONTAINER)
+                            && (structure.energy < structure.energyCapacity);
+                    }
+                });
             }
-        } else {
-            //move to an extension
-            var targetTwo = creep.pos.findClosestByRange(FIND_STRUCTURES, {
-                filter: (structure) => {
-                    return (structure.structureType == STRUCTURE_EXTENSION);
-                }
-            });
-            if (targetTwo != null) {
-                creep.moveTo(targetTwo);
-            }
+            console.log("Harvester target: " + target)
+            if (!target) {
+                var target = creep.pos.findClosestByRange(FIND_STRUCTURES, {
+                    filter: (structure) => {
+                        return (structure.structureType == STRUCTURE_TOWER)
+                            && (structure.energy < structure.energyCapacity)
 
+                    }
+                });
+            }
+            console.log("Harvester target: " + target)
+
+            //structure.store[RESOURCE_ENERGY] < structure.storeCapacity
+            if (target == null) {
+                target = creep.pos.findClosestByRange(FIND_STRUCTURES, { filter: (structure) => { return structure.structureType == STRUCTURE_STORAGE && _.sum(structure.store) < structure.storeCapacity; } });
+            }
+            if (target != null) {
+                /////////////////////////////////////////////////////////////////////////////////////////////////////////
+                //Structures found, deposit energy
+                if (creep.transfer(target, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(target);
+                }
+            } else {
+                //move to an extension
+                var targetTwo = creep.pos.findClosestByRange(FIND_STRUCTURES, {
+                    filter: (structure) => {
+                        return (structure.structureType == STRUCTURE_EXTENSION);
+                    }
+                });
+                if (targetTwo != null) {
+                    creep.moveTo(targetTwo);
+                }
+
+            }
         }
     }
 }
-
 module.exports = roleMulti;
