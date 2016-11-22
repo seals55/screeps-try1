@@ -12,10 +12,10 @@ module.exports.loop = function () {
     //console.log('tick')
     var vars = require('vars');
 
-    var maxMulti = vars.maxMulti;
-    var maxRepair = vars.maxRepair;
-    var maxHarvester = vars.maxHarvester;
-    var maxUpgrader = vars.maxUpgrader;
+    var maxMulti = 0;
+    var maxRepair = 1;
+    var maxHarvester = 6;
+    var maxUpgrader = 6;
     var debug = vars.debug;
 
     for (var name in Memory.creeps) {
