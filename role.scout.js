@@ -10,19 +10,18 @@
 var roleScout = {
 
     /** @param {Creep} creep **/
-    run: function(creep) {
-         var sources = creep.room.find(FIND_SOURCES);
-         if (sources[0])
-         {
+    run: function (creep) {
+        var sources = creep.room.find(FIND_SOURCES);
+        if (sources[0]) {
             //move off page
             //move DIR
             creep.move(EAST)
-         } elseif {
-            if(creep.harvest(sources[0]) == ERR_NOT_IN_RANGE) {
-            creep.moveTo(sources[0]);
+        } else {
+            if (creep.harvest(sources[0]) == ERR_NOT_IN_RANGE) {
+                creep.moveTo(sources[0]);
+            }
         }
-         
-         
+
         // if(creep.carry.energy == 0) {
         //     var sources = creep.room.find(FIND_SOURCES);
         //     if(creep.harvest(sources[0]) == ERR_NOT_IN_RANGE) {
