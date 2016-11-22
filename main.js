@@ -9,16 +9,14 @@ var newCostMatrix = require('newCostMatrix');
 
 var tower = require('tower');
 
-var maxMulti = vars.maxMulti;
-var maxRepair = vars.maxRepair;
-var maxHarvester = vars.maxHarvester;
-var maxUpgrader = vars.maxUpgrader;
-var debug = vars.debug;
-
-
-
 module.exports.loop = function() {
     //console.log('tick')
+
+    var maxMulti = vars.maxMulti;
+    var maxRepair = vars.maxRepair;
+    var maxHarvester = vars.maxHarvester;
+    var maxUpgrader = vars.maxUpgrader;
+    var debug = vars.debug;
 
     for (var name in Memory.creeps) {
         if (!Game.creeps[name]) {
