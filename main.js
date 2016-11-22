@@ -37,7 +37,7 @@ module.exports.loop = function() {
 
         var spawn = curRoom.find(FIND_STRUCTURES, { filter: { structureType: STRUCTURE_SPAWN } })
 
-        console.log("Current Room: '" + curRoom + "' | " + "Spawn: '" + spawn + "' | " + "Energy: '" + curRoom.energyCapacityAvailable + "'");
+        console.log("Current Room: '" + curRoom.name + "' | " + "Spawn: '" + spawn + "' | " + "Energy: '" + curRoom.energyCapacityAvailable + "'");
 
         if (spawn[0] != null) {
 
@@ -67,14 +67,15 @@ module.exports.loop = function() {
             } else if (harvester.length < maxHarvester) {
                 var newName = spawn[0].createCreep(helper.calcBody(curRoom, 'role.harvester'), undefined, { role: 'harvester' });
                 if (_.isString(newName)) { console.log('Spawning new harvester: ' + newName); }
+            } else if ((scout.length < maxScout) && (curRoom.energyCapacityAvailable >= 800)) {
+                var newName = spawn[0].createCreep(helper.calcBody(curRoom, 'role.scout'), undefined, { role: 'scout' });
+
             } else if (repair.length < maxRepair) {
                 var newName = spawn[0].createCreep(helper.calcBody(curRoom, 'role.repair'), undefined, { role: 'repair' });
                 if (_.isString(newName)) { console.log('Spawning new repair: ' + newName); }
             } else if (upgrader.length < maxUpgrader) {
                 var newName = spawn[0].createCreep(helper.calcBody(curRoom, 'role.upgrader'), undefined, { role: 'upgrader' });
                 if (_.isString(newName)) { console.log('Spawning new upgrader: ' + newName); }
-            } else if ((scout.length < maxScout) && (curRoom.energyCapacityAvailable >= 800)) {
-                var newName = spawn[0].createCreep(helper.calcBody(curRoom, 'role.scout'), undefined, { role: 'scout' });
             }
 
 
