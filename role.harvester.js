@@ -90,7 +90,7 @@ var roleMulti = {
 
             /////////////////////////////////////////////////////////////////////////////////////////////////////////
             //Search for structure with less then max energy
-            //fill tower first only if <= 200 energy
+            //fill tower first only if <= 200 energy            
             var target = creep.pos.findClosestByRange(FIND_STRUCTURES, {
                 filter: (structure) => {
                     return (structure.structureType == STRUCTURE_TOWER)
@@ -99,7 +99,7 @@ var roleMulti = {
 
             });
             console.log("1. Harvester target: " + target)
-            if (target == null) {
+            if (!target) {
                 var target = creep.pos.findClosestByRange(FIND_STRUCTURES, {
                     filter: (structure) => {
                         return (structure.structureType == STRUCTURE_EXTENSION
@@ -111,7 +111,7 @@ var roleMulti = {
                 console.log("2. Harvester target: " + target)
             }
 
-            if (target == null) {
+            if (!target) {
                 var target = creep.pos.findClosestByRange(FIND_STRUCTURES, {
                     filter: (structure) => {
                         return (structure.structureType == STRUCTURE_TOWER)
