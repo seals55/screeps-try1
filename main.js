@@ -11,8 +11,8 @@ var tower = require('tower');
 
 var maxMulti = 0;
 var maxRepair = 1;
-var maxHarvester = 8;
-var maxUpgrader = 8;
+var maxHarvester = 7;
+var maxUpgrader = 7;
 var debug = true;
 
 
