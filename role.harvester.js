@@ -90,13 +90,13 @@ var roleMulti = {
 
             /////////////////////////////////////////////////////////////////////////////////////////////////////////
             //Search for structure with less then max energy
-            //////pos.findClosestByPath //creep.room.find
+            //fill tower first only if <= 200 energy
             var target = creep.pos.findClosestByRange(FIND_STRUCTURES, {
                 filter: (structure) => {
                     return (structure.structureType == STRUCTURE_TOWER)
                         && (structure.energy + 800 < structure.energyCapacity);
                 }
-            });
+            });            
             if (!target) {
                 var target = creep.pos.findClosestByRange(FIND_STRUCTURES, {
                     filter: (structure) => {
@@ -108,7 +108,7 @@ var roleMulti = {
                     }
                 });
             }
-
+console.log(target)
 
             //structure.store[RESOURCE_ENERGY] < structure.storeCapacity
             if (target == null) {
