@@ -1,4 +1,4 @@
-//var vars = require('vars');
+var vars = require('vars');
 var helper = require('helper');
 
 var roleMulti = require('role.multi');
@@ -9,11 +9,11 @@ var newCostMatrix = require('newCostMatrix');
 
 var tower = require('tower');
 
-var maxMulti = 0;
-var maxRepair = 1;
-var maxHarvester = 7;
-var maxUpgrader = 7;
-var debug = true;
+var maxMulti = vars.maxMulti;
+var maxRepair = vars.maxRepair;
+var maxHarvester = vars.maxHarvester;
+var maxUpgrader = vars.maxUpgrader;
+var debug = vars.debug;
 
 
 
