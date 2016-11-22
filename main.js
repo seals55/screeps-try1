@@ -37,7 +37,7 @@ module.exports.loop = function() {
         var spawn = curRoom.find(FIND_STRUCTURES, { filter: { structureType: STRUCTURE_SPAWN } })
         console.log("Current Room: '" + curRoom + "' | " + "Spawn: '" + spawn + "'");
 
-        if (spawn != undefined) {
+        if (spawn) {
 
             //newCostMatrix.run(spawn);
 
@@ -60,18 +60,18 @@ module.exports.loop = function() {
             }
 
             if (multi.length < maxMulti) {
-                var newName = spawn.createCreep(helper.calcBody(curRoom, 'role.multi'), undefined, { role: 'multi' });
+                var newName = spawn[0].createCreep(helper.calcBody(curRoom, 'role.multi'), undefined, { role: 'multi' });
                 if (_.isString(newName)) { console.log('Spawning new multi: ' + newName); }
             } else if (scout.length < maxScout) {
-                var newName = spawn.createCreep(helper.calcBody(curRoom, 'role.scout'), undefined, { role: 'scout' });
+                var newName = spawn[0].createCreep(helper.calcBody(curRoom, 'role.scout'), undefined, { role: 'scout' });
             } else if (harvester.length < maxHarvester) {
-                var newName = spawn.createCreep(helper.calcBody(curRoom, 'role.harvester'), undefined, { role: 'harvester' });
+                var newName = spawn[0].createCreep(helper.calcBody(curRoom, 'role.harvester'), undefined, { role: 'harvester' });
                 if (_.isString(newName)) { console.log('Spawning new harvester: ' + newName); }
             } else if (repair.length < maxRepair) {
-                var newName = spawn.createCreep(helper.calcBody(curRoom, 'role.repair'), undefined, { role: 'repair' });
+                var newName = spawn[0].createCreep(helper.calcBody(curRoom, 'role.repair'), undefined, { role: 'repair' });
                 if (_.isString(newName)) { console.log('Spawning new repair: ' + newName); }
             } else if (upgrader.length < maxUpgrader) {
-                var newName = spawn.createCreep(helper.calcBody(curRoom, 'role.upgrader'), undefined, { role: 'upgrader' });
+                var newName = spawn[0].createCreep(helper.calcBody(curRoom, 'role.upgrader'), undefined, { role: 'upgrader' });
                 if (_.isString(newName)) { console.log('Spawning new upgrader: ' + newName); }
             }
 
