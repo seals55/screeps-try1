@@ -13,7 +13,7 @@ var roleScout = {
         moveToRoom = "W7N3"
         let a = new RoomPosition(25, 25, moveToRoom);
 
-        console.log(creep.name + " room: '" + creep.room + "' | Wants Room: '" + moveToRoom + "'")
+        console.log(creep.name + " room: '" + creep.room.room + "' | Wants Room: '" + moveToRoom + "'")
 
         //MOVE TO TARGET ROOM
         if (creep.room[0] != moveToRoom) {
