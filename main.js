@@ -6,6 +6,8 @@ var roleHarvester = require('role.harvester');
 var roleUpgrader = require('role.upgrader');
 var roleScout = require('role.scout');
 var newCostMatrix = require('newCostMatrix');
+var roleClaimer = require('role.claimer');
+
 var tower = require('tower');
 
 module.exports.loop = function() {
@@ -13,10 +15,11 @@ module.exports.loop = function() {
     var vars = require('vars');
 
     var maxMulti = 0;
-    var maxRepair = 1;
+    var maxRepair = 6;
     var maxHarvester = 6;
     var maxUpgrader = 5;
-    var maxScout = 1;
+    var maxScout = 0;
+    var maxClaimer = 0;
     var debug = vars.debug;
 
     for (var name in Memory.creeps) {
@@ -39,7 +42,7 @@ module.exports.loop = function() {
 
         console.log("Current Room: '" + curRoom + "' | " + "Spawn: '" + spawn + "' | " + "Energy: '" + curRoom.energyCapacityAvailable + "'");
 
-        if (spawn[0] != null) {
+
 
             //newCostMatrix.run(spawn);
 
@@ -48,7 +51,8 @@ module.exports.loop = function() {
             var harvester = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester');
             var upgrader = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader');
             var scout = _.filter(Game.creeps, (creep) => creep.memory.role == 'scout');
-
+        var claimer = _.filter(Game.creeps, (creep) => creep.memory.role == 'claimer');
+        if (spawn[0] != null) {
             if (debug) {
                 console.log('Multi: ' + multi.length + '/' + maxMulti + ', Harvester: ' + harvester.length + '/' + maxHarvester
                     + ', Repair: ' + repair.length + '/' + maxRepair + ', Upgrader: ' + upgrader.length + '/' + maxUpgrader
@@ -58,7 +62,8 @@ module.exports.loop = function() {
             if (multi.length < maxMulti || repair.length < maxRepair || harvester.length < maxHarvester || upgrader.length < maxUpgrader) {
                 console.log('Multi: ' + multi.length + '/' + maxMulti + ', Harvester: ' + harvester.length + '/' + maxHarvester
                     + ', Repair: ' + repair.length + '/' + maxRepair + ', Upgrader: ' + upgrader.length + '/' + maxUpgrader
-                    + ', Scout: ' + scout.length + '/' + maxScout + ', Total Creeps: ' + _.filter(Game.creeps).length);
+                    + ', Scout: ' + scout.length + '/' + maxScout 		    + ', Claimer:' + claimer.length + '/' + maxClaimer +', Total Creeps:' + _.filter(Game.creeps).length);
+
             }
 
             if (multi.length < maxMulti) {
@@ -76,6 +81,10 @@ module.exports.loop = function() {
             } else if (upgrader.length < maxUpgrader) {
                 var newName = spawn[0].createCreep(helper.calcBody(curRoom, 'role.upgrader'), undefined, { role: 'upgrader' });
                 if (_.isString(newName)) { console.log('Spawning new upgrader: ' + newName); }
+            } else if(claimer.length < maxClaimer) {
+                var newName = spawn[0].createCreep([CLAIM,CLAIM,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE], undefined, {role: 'claimer'});
+                //console.log('newname '+newName)
+                if (_.isString(newName)) { console.log('Spawning new claimer: ' + newName); }
             }
 
 
@@ -84,12 +93,11 @@ module.exports.loop = function() {
                 var newName = spawn[0].createCreep([MOVE, WORK, CARRY], undefined, { role: 'multi' });
                 if (_.isString(newName)) { console.log('Spawning new multi: ' + newName); }
             }
-
+}
             var towers = curRoom.find(FIND_MY_STRUCTURES, { filter: { structureType: STRUCTURE_TOWER } });
             if (towers != undefined) {
                 for (i = 0; i < towers.length; i++) {
                     tower.run(towers[i]);
-                }
             }
         }
     }
@@ -106,6 +114,8 @@ module.exports.loop = function() {
             roleHarvester.run(creep);
         } else if (creep.memory.role == 'upgrader') {
             roleUpgrader.run(creep);
+        } else if (creep.memory.role == 'claimer') {
+            roleClaimer.run(creep);
         } else if (creep.memory.role == 'scout') {
             roleScout.run(creep);
         }
