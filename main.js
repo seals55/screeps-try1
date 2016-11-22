@@ -26,9 +26,7 @@ module.exports.loop = function () {
     }
 
     if (debug) {
-        console.log("Debug: " + debug + " : " + "maxMulti: " + maxMulti + " : " + "maxRepair: " + maxRepair);
-        console.log(maxHarvester);
-        console.log(maxUpgrader);
+        console.log("Debug: " + debug + " : " + "maxMulti: " + maxMulti + " : " + "maxRepair: " + maxRepair + " : " + "maxHarvester:" + maxHarvester + " : " + "maxUpgrader:" + maxUpgrader);
     };
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////
