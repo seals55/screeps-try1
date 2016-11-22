@@ -12,5 +12,5 @@ define("debug", true);
 
 define("maxMulti", 0);
 define("maxRepair", 1);
-define("maxHarvester", 6);
-define("maxUpgrader", 6);
+define("maxHarvester", 8);
+define("maxUpgrader", 8);
