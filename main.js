@@ -19,13 +19,19 @@ module.exports.loop = function() {
             console.log('Clearing non-existing creep memory:', name);
         }
     }
+    
+    var maxMulti = vars.maxMulti;
+    var maxRepair = vars.maxRepair;
+    var maxHarvester = vars.maxHarvester;
+    
     if (vars.debug) {
         console.log(vars.debug);
-        console.log(vars.maxMulti);
-        console.log(vars.maxRepair);
-        console.log(vars.maxHarvester);
+        console.log(maxMulti);
+        console.log(maxRepair);
+        console.log(maxHarvester);
         console.log(vars.maxUpgrader);
     };
+
     /////////////////////////////////////////////////////////////////////////////////////////////////////////
     //Loop rooms
     for (var rm in Game.rooms) {
@@ -37,17 +43,17 @@ module.exports.loop = function() {
         var harvester = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester');
         var upgrader = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader');
 
-        if (multi.length < vars.maxMulti || repair.length < vars.maxRepair || harvester.length < vars.maxHarvester || upgrader.length < vars.maxUpgrader) {
-            if (vars.debug) { console.log('Multi:' + multi.length + '/' + vars.maxMulti + ', Harvester:' + harvester.length + '/' + vars.maxHarvester + ', Repair:' + repair.length + '/' + vars.maxRepair + ', Upgrader:' + upgrader.length + '/' + vars.maxUpgrader + ', Total Creeps:' + _.filter(Game.creeps).length); };
+        if (multi.length < maxMulti || repair.length < maxRepair || harvester.length < maxHarvester || upgrader.length < vars.maxUpgrader) {
+            if (vars.debug) { console.log('Multi:' + multi.length + '/' + maxMulti + ', Harvester:' + harvester.length + '/' + maxHarvester + ', Repair:' + repair.length + '/' + maxRepair + ', Upgrader:' + upgrader.length + '/' + vars.maxUpgrader + ', Total Creeps:' + _.filter(Game.creeps).length); };
         }
 
-        if (multi.length < vars.maxMulti) {
+        if (multi.length < maxMulti) {
             var newName = spawn[0].createCreep(helper.calcBody(curRoom, 'role.multi'), undefined, { role: 'multi' });
             if (_.isString(newName)) { console.log('Spawning new multi: ' + newName); }
-        } else if (harvester.length < vars.maxHarvester) {
+        } else if (harvester.length < maxHarvester) {
             var newName = spawn[0].createCreep(helper.calcBody(curRoom, 'role.harvester'), undefined, { role: 'harvester' });
             if (_.isString(newName)) { console.log('Spawning new harvester: ' + newName); }
-        } else if (repair.length < vars.maxRepair) {
+        } else if (repair.length < maxRepair) {
             var newName = spawn[0].createCreep(helper.calcBody(curRoom, 'role.repair'), undefined, { role: 'repair' });
             if (_.isString(newName)) { console.log('Spawning new repair: ' + newName); }
         } else if (upgrader.length < vars.maxUpgrader) {
