@@ -17,6 +17,7 @@ module.exports.loop = function () {
     var maxRepair = 1;
     var maxHarvester = 6;
     var maxUpgrader = 5;
+    var maxScout = 0;
     var debug = vars.debug;
 
     for (var name in Memory.creeps) {
@@ -40,6 +41,7 @@ module.exports.loop = function () {
         var repair = _.filter(Game.creeps, (creep) => creep.memory.role == 'repair');
         var harvester = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester');
         var upgrader = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader');
+        var scout = _.filter(Game.creeps, (creep) => creep.memory.role == 'scout');
 
         if (debug) { console.log('Multi: ' + multi.length + '/' + maxMulti + ', Harvester: ' + harvester.length + '/' + maxHarvester + ', Repair: ' + repair.length + '/' + maxRepair + ', Upgrader: ' + upgrader.length + '/' + maxUpgrader + ', Total Creeps: ' + _.filter(Game.creeps).length); };
 
@@ -59,7 +61,10 @@ module.exports.loop = function () {
         } else if (upgrader.length < maxUpgrader) {
             var newName = spawn[0].createCreep(helper.calcBody(curRoom, 'role.upgrader'), undefined, { role: 'upgrader' });
             if (_.isString(newName)) { console.log('Spawning new upgrader: ' + newName); }
+        } else if (scout.length < maxScout) {
+            var newName = spawn[0].createCreep(helper.calcBody(curRoom, 'role.scout'), undefined, { role: 'scout' });
         }
+
 
         //if all creeps died, spawn the worst possible one to get things going again
         if (_.filter(Game.creeps) == null) {
