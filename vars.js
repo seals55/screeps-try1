@@ -13,7 +13,6 @@ function define(name, value) {
 define("debug", true);
 
 // setup some minimum numbers for different roles
-
 define("maxMulti", 0);
 define("maxRepair", 1);
 define("maxHarvester", 8);
