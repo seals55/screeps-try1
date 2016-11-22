@@ -86,7 +86,11 @@ module.exports = {
                 ['role.upgrader', 3100, [MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY]],
                 ['role.upgrader', 3900, [MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY]],
 
-                ['role.scout', 800, [MOVE, MOVE, MOVE, CLAIM]]
+                ['role.scout', 800, [MOVE, MOVE, MOVE, CLAIM]],
+                ['role.scout', 1300, [MOVE, MOVE, MOVE, CLAIM]],
+                ['role.scout', 1800, [MOVE, MOVE, MOVE, CLAIM]],
+                ['role.scout', 2300, [MOVE, MOVE, MOVE, CLAIM]],
+                ['role.scout', 3100, [MOVE, MOVE, MOVE, CLAIM]]
 
             ];
             var upgradeRow = 0;
