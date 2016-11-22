@@ -11,17 +11,21 @@ var roleScout = {
     /** @param {Creep} creep **/
     run: function (creep) {
         moveToRoom = "W7N3"
-        let a = new RoomPosition(25,25,moveToRoom);
+        let a = new RoomPosition(25, 25, moveToRoom);
+
+        console.say(creep.name + " room: '" + creep.room + "' | Wants Room: '" + moveToRoom + "'")
+
         //MOVE TO TARGET ROOM
         if (creep.room != moveToRoom) {
 
-            
             // var route = Game.map.findRoute(creep.room, moveToRoom);
             // if (route.length > 0) {
             //     var exit = creep.pos.findClosestByRange(route[0].exit);
-                creep.say("Exiting Room")
-                // creep.moveTo(exit);
-                creep.moveTo(a);
+            creep.say("Exiting Room")
+            // creep.moveTo(exit);
+            creep.moveTo(a);
+
+
 
             // }
         } else {
