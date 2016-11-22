@@ -25,9 +25,9 @@ module.exports.loop = function () {
         }
     }
 
-    if (debug) {
-        console.log("Debug: " + debug + " : " + "maxMulti: " + maxMulti + " : " + "maxRepair: " + maxRepair + " : " + "maxHarvester:" + maxHarvester + " : " + "maxUpgrader:" + maxUpgrader);
-    };
+    // if (debug) {
+    //     console.log("Debug: " + debug + " : " + "maxMulti: " + maxMulti + " : " + "maxRepair: " + maxRepair + " : " + "maxHarvester:" + maxHarvester + " : " + "maxUpgrader:" + maxUpgrader);
+    // };
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////
     //Loop rooms
