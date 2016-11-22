@@ -16,12 +16,14 @@ var roleScout = {
             var route = Game.map.findRoute(creep.room, moveToRoom);
             if (route.length > 0) {
                 var exit = creep.pos.findClosestByRange(route[0].exit);
+                creep.say("Exiting Room")
                 creep.moveTo(exit);
             }
         } else {
             if (creep.room.controller) {
                 if (creep.reserveController(creep.room.controller) == ERR_NOT_IN_RANGE) {
                     creep.moveTo(creep.room.controller);
+                    creep.say("Claiming Room")
                 }
             }
         }

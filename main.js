@@ -6,7 +6,6 @@ var roleHarvester = require('role.harvester');
 var roleUpgrader = require('role.upgrader');
 var roleScout = require('role.scout');
 var newCostMatrix = require('newCostMatrix');
-
 var tower = require('tower');
 
 module.exports.loop = function() {
@@ -17,7 +16,7 @@ module.exports.loop = function() {
     var maxRepair = 1;
     var maxHarvester = 6;
     var maxUpgrader = 5;
-    var maxScout = 0;
+    var maxScout = 1;
     var debug = vars.debug;
 
     for (var name in Memory.creeps) {
@@ -50,7 +49,9 @@ module.exports.loop = function() {
         };
 
         if (multi.length < maxMulti || repair.length < maxRepair || harvester.length < maxHarvester || upgrader.length < maxUpgrader) {
-            console.log('Multi: ' + multi.length + '/' + maxMulti + ', Harvester: ' + harvester.length + '/' + maxHarvester + ', Repair: ' + repair.length + '/' + maxRepair + ', Upgrader: ' + upgrader.length + '/' + maxUpgrader + ', Scout: ' + scout.length + '/' + maxScout + ', Total Creeps: ' + _.filter(Game.creeps).length);
+            console.log('Multi: ' + multi.length + '/' + maxMulti + ', Harvester: ' + harvester.length + '/' + maxHarvester
+                + ', Repair: ' + repair.length + '/' + maxRepair + ', Upgrader: ' + upgrader.length + '/' + maxUpgrader
+                + ', Scout: ' + scout.length + '/' + maxScout + ', Total Creeps: ' + _.filter(Game.creeps).length);
         }
 
         if (multi.length < maxMulti) {
