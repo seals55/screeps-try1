@@ -99,7 +99,7 @@ var roleMulti = {
                 }
 
             });
-            // if (vars.debug) { console.log("1. Harvester target: " + target) };
+            if (vars.debug) { console.log("1. Harvester target: " + target) };
             if (!target) {
                 var target = creep.pos.findClosestByRange(FIND_STRUCTURES, {
                     filter: (structure) => {
@@ -109,7 +109,7 @@ var roleMulti = {
                             && (structure.energy < structure.energyCapacity);
                     }
                 });
-                // if (vars.debug) { console.log("2. Harvester target: " + target) };
+                if (vars.debug) { console.log("2. Harvester target: " + target) };
             }
 
             if (!target) {
@@ -120,7 +120,7 @@ var roleMulti = {
 
                     }
                 });
-                // if (vars.debug) { console.log("3. Harvester target: " + target) };
+                if (vars.debug) { console.log("3. Harvester target: " + target) };
             }
 
 
