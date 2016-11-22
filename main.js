@@ -19,13 +19,13 @@ module.exports.loop = function() {
             console.log('Clearing non-existing creep memory:', name);
         }
     }
-
-    console.log(vars.debug);
-    console.log(vars.maxMulti);
-    console.log(vars.maxRepair);
-console.log(vars.maxHarvester);
-console.log(vars.maxUpgrader);
-
+    if (vars.debug) {
+        console.log(vars.debug);
+        console.log(vars.maxMulti);
+        console.log(vars.maxRepair);
+        console.log(vars.maxHarvester);
+        console.log(vars.maxUpgrader);
+    };
     /////////////////////////////////////////////////////////////////////////////////////////////////////////
     //Loop rooms
     for (var rm in Game.rooms) {
@@ -39,7 +39,7 @@ console.log(vars.maxUpgrader);
 
         if (multi.length < vars.maxMulti || repair.length < vars.maxRepair || harvester.length < vars.maxHarvester || upgrader.length < vars.maxUpgrader) {
             if (vars.debug) { console.log('Multi:' + multi.length + '/' + vars.maxMulti + ', Harvester:' + harvester.length + '/' + vars.maxHarvester + ', Repair:' + repair.length + '/' + vars.maxRepair + ', Upgrader:' + upgrader.length + '/' + vars.maxUpgrader + ', Total Creeps:' + _.filter(Game.creeps).length); };
-         }
+        }
 
         if (multi.length < vars.maxMulti) {
             var newName = spawn[0].createCreep(helper.calcBody(curRoom, 'role.multi'), undefined, { role: 'multi' });
