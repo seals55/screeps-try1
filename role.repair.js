@@ -12,7 +12,7 @@ var helper = require('helper');
 
 var roleRepair = {
 
-    run: function (creep) {
+    run: function(creep) {
 
         if (creep.carry.energy == 0) {
             creep.memory.working = false;

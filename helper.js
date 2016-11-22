@@ -10,214 +10,214 @@ var vars = require('vars');
 var debug = vars.debug;
 
 module.exports = {
-    maxCreep: function(curRoom,role){
-        var target = curRoom.find(FIND_STRUCTURES, { filter: (structure) => { return (structure.structureType == STRUCTURE_CONTROLLER ); } });
-        if (target[0]==null){ return false;}
+    maxCreep: function(curRoom, role) {
+        var target = curRoom.find(FIND_STRUCTURES, { filter: (structure) => { return (structure.structureType == STRUCTURE_CONTROLLER); } });
+        if (target[0] == null) { return false; }
         switch (target[0].level) {
-                case (0):
-                    switch (role){
-                        case ('multi'):
-                            return 0;
-                            break;
-                        case ('repair'):
-                            return 0;
-                            break;
-                        case ('harvester'):
-                            return 0;
-                            break;
-                        case ('upgrader'):
-                            return 0;
-                            break;
-                        case ('claimer'):
-                            return 0;
-                            break;
-                        default:
-                            return false;
-                            break;
-                    }
-                    break;
-                case (1):
-                    switch (role){
-                        case ('multi'):
-                            return 0;
-                            break;
-                        case ('repair'):
-                            return 2;
-                            break;
-                        case ('harvester'):
-                            return 4;
-                            break;
-                        case ('upgrader'):
-                            return 4;
-                            break;
-                        case ('claimer'):
-                            return 0;
-                            break;
-                        default:
-                            return false;
-                            break;
-                    }
-                    break;
-                case (2):
-                    switch (role){
-                        case ('multi'):
-                            return 2;
-                            break;
-                        case ('repair'):
-                            return 2;
-                            break;
-                        case ('harvester'):
-                            return 6;
-                            break;
-                        case ('upgrader'):
-                            return 6;
-                            break;
-                        case ('claimer'):
-                            return 0;
-                            break;
-                        default:
-                            return false;
-                            break;
-                    }
-                    break;
-                case (3):
-                    switch (role){
-                        case ('multi'):
-                            return 2;
-                            break;
-                        case ('repair'):
-                            return 2;
-                            break;
-                        case ('harvester'):
-                            return 6;
-                            break;
-                        case ('upgrader'):
-                            return 6;
-                            break;
-                        case ('claimer'):
-                            return 0;
-                            break;
-                        default:
-                            return false;
-                            break;
-                    }
-                    break;
-                case (4):
-                    switch (role){
-                        case ('multi'):
-                            return 2;
-                            break;
-                        case ('repair'):
-                            return 2;
-                            break;
-                        case ('harvester'):
-                            return 6;
-                            break;
-                        case ('upgrader'):
-                            return 6;
-                            break;
-                        case ('claimer'):
-                            return 0;
-                            break;
-                        default:
-                            return false;
-                            break;
-                    }
-                    break;
-                case (5):
-                    switch (role){
-                        case ('multi'):
-                            return 2;
-                            break;
-                        case ('repair'):
-                            return 2;
-                            break;
-                        case ('harvester'):
-                            return 6;
-                            break;
-                        case ('upgrader'):
-                            return 6;
-                            break;
-                        case ('claimer'):
-                            return 0;
-                            break;
-                        default:
-                            return false;
-                            break;
-                    }
-                    break;
-                case (6):
-                    switch (role){
-                        case ('multi'):
-                            return 2;
-                            break;
-                        case ('repair'):
-                            return 2;
-                            break;
-                        case ('harvester'):
-                            return 5;
-                            break;
-                        case ('upgrader'):
-                            return 5;
-                            break;
-                        case ('claimer'):
-                            return 0;
-                            break;
-                        default:
-                            return false;
-                            break;
-                    }
-                    break;
-                case (7):
-                    switch (role){
-                        case ('multi'):
-                            return 2;
-                            break;
-                        case ('repair'):
-                            return 2;
-                            break;
-                        case ('harvester'):
-                            return 5;
-                            break;
-                        case ('upgrader'):
-                            return 5;
-                            break;
-                        case ('claimer'):
-                            return 0;
-                            break;
-                        default:
-                            return false;
-                            break;
-                    }
-                    break;
-                case (8):
-                    switch (role){
-                        case ('multi'):
-                            return 2;
-                            break;
-                        case ('repair'):
-                            return 2;
-                            break;
-                        case ('harvester'):
-                            return 5;
-                            break;
-                        case ('upgrader'):
-                            return 5;
-                            break;
-                        case ('claimer'):
-                            return 0;
-                            break;
-                        default:
-                            return false;
-                            break;
-                    }
-                    break;
-                default:
-                    return false;
-                    break;
-            }
+            case (0):
+                switch (role) {
+                    case ('multi'):
+                        return 0;
+                        break;
+                    case ('repair'):
+                        return 0;
+                        break;
+                    case ('harvester'):
+                        return 0;
+                        break;
+                    case ('upgrader'):
+                        return 0;
+                        break;
+                    case ('claimer'):
+                        return 0;
+                        break;
+                    default:
+                        return false;
+                        break;
+                }
+                break;
+            case (1):
+                switch (role) {
+                    case ('multi'):
+                        return 0;
+                        break;
+                    case ('repair'):
+                        return 2;
+                        break;
+                    case ('harvester'):
+                        return 4;
+                        break;
+                    case ('upgrader'):
+                        return 4;
+                        break;
+                    case ('claimer'):
+                        return 0;
+                        break;
+                    default:
+                        return false;
+                        break;
+                }
+                break;
+            case (2):
+                switch (role) {
+                    case ('multi'):
+                        return 2;
+                        break;
+                    case ('repair'):
+                        return 2;
+                        break;
+                    case ('harvester'):
+                        return 6;
+                        break;
+                    case ('upgrader'):
+                        return 6;
+                        break;
+                    case ('claimer'):
+                        return 0;
+                        break;
+                    default:
+                        return false;
+                        break;
+                }
+                break;
+            case (3):
+                switch (role) {
+                    case ('multi'):
+                        return 2;
+                        break;
+                    case ('repair'):
+                        return 2;
+                        break;
+                    case ('harvester'):
+                        return 6;
+                        break;
+                    case ('upgrader'):
+                        return 6;
+                        break;
+                    case ('claimer'):
+                        return 0;
+                        break;
+                    default:
+                        return false;
+                        break;
+                }
+                break;
+            case (4):
+                switch (role) {
+                    case ('multi'):
+                        return 2;
+                        break;
+                    case ('repair'):
+                        return 2;
+                        break;
+                    case ('harvester'):
+                        return 6;
+                        break;
+                    case ('upgrader'):
+                        return 6;
+                        break;
+                    case ('claimer'):
+                        return 0;
+                        break;
+                    default:
+                        return false;
+                        break;
+                }
+                break;
+            case (5):
+                switch (role) {
+                    case ('multi'):
+                        return 2;
+                        break;
+                    case ('repair'):
+                        return 2;
+                        break;
+                    case ('harvester'):
+                        return 6;
+                        break;
+                    case ('upgrader'):
+                        return 6;
+                        break;
+                    case ('claimer'):
+                        return 0;
+                        break;
+                    default:
+                        return false;
+                        break;
+                }
+                break;
+            case (6):
+                switch (role) {
+                    case ('multi'):
+                        return 2;
+                        break;
+                    case ('repair'):
+                        return 2;
+                        break;
+                    case ('harvester'):
+                        return 5;
+                        break;
+                    case ('upgrader'):
+                        return 5;
+                        break;
+                    case ('claimer'):
+                        return 0;
+                        break;
+                    default:
+                        return false;
+                        break;
+                }
+                break;
+            case (7):
+                switch (role) {
+                    case ('multi'):
+                        return 2;
+                        break;
+                    case ('repair'):
+                        return 2;
+                        break;
+                    case ('harvester'):
+                        return 5;
+                        break;
+                    case ('upgrader'):
+                        return 5;
+                        break;
+                    case ('claimer'):
+                        return 0;
+                        break;
+                    default:
+                        return false;
+                        break;
+                }
+                break;
+            case (8):
+                switch (role) {
+                    case ('multi'):
+                        return 2;
+                        break;
+                    case ('repair'):
+                        return 2;
+                        break;
+                    case ('harvester'):
+                        return 5;
+                        break;
+                    case ('upgrader'):
+                        return 5;
+                        break;
+                    case ('claimer'):
+                        return 0;
+                        break;
+                    default:
+                        return false;
+                        break;
+                }
+                break;
+            default:
+                return false;
+                break;
+        }
     },
-    maxEnergy: function (curRoom) {
+    maxEnergy: function(curRoom) {
         try {
             var targets = curRoom.find(FIND_STRUCTURES, { filter: (structure) => { return (structure.structureType == STRUCTURE_SPAWN || structure.structureType == STRUCTURE_EXTENSION); } });
             var total = 0
@@ -230,7 +230,7 @@ module.exports = {
             return false;
         }
     },
-    curEnergy: function (curRoom) {
+    curEnergy: function(curRoom) {
         try {
             var targets = curRoom.find(FIND_STRUCTURES, { filter: (structure) => { return (structure.structureType == STRUCTURE_SPAWN || structure.structureType == STRUCTURE_EXTENSION); } });
             var total = 0
@@ -243,7 +243,7 @@ module.exports = {
             return false;
         }
     },
-    calcBody: function (curRoom, role) {
+    calcBody: function(curRoom, role) {
         try {
             // lvl 1:  300
             // lvl 2:  550
@@ -291,7 +291,7 @@ module.exports = {
                 ['role.upgrader', 1800, [MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY]],
                 ['role.upgrader', 2300, [MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY]],
                 ['role.upgrader', 3100, [MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY]],
-                	            ['role.upgrader',3900,[MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY]]
+                ['role.upgrader', 3900, [MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY]]
             ];
             var upgradeRow = 0;
             switch (true) {
@@ -341,7 +341,7 @@ module.exports = {
         }
     },
 
-    routeCreep: function (creep, dest) {
+    routeCreep: function(creep, dest) {
         if (creep.fatigue > 0) { return -1; }
         if (typeof dest == "undefined") { return -1; }
 
@@ -406,7 +406,7 @@ module.exports = {
         return error;
     },
 
-    pathisBlocked: function (position, dir) {
+    pathisBlocked: function(position, dir) {
         switch (dir) {
             case (1)://top
                 position.y -= 1;
@@ -448,7 +448,7 @@ module.exports = {
 
     },
 
-    isEnterable: function (pos) {
+    isEnterable: function(pos) {
         var atPos = pos.look();
         var SWAMP = "swamp";
         var PLAIN = "plain";

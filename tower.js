@@ -13,7 +13,7 @@ var debug = vars.debug;
 var tower = {
 
     /** @param {Creep} creep **/
-    run: function (curTower) {
+    run: function(curTower) {
         var hostile = curTower.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
         if (hostile) {
             curTower.attack(hostile)

@@ -1,6 +1,6 @@
 var roleClaimer = {
 
-    run: function (creep) {
+    run: function(creep) {
         for (var flag in Game.flags) {
             if (flag = "newController") {
                 if (Game.flags[flag].pos.roomName != creep.room.name) {
