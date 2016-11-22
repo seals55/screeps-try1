@@ -18,9 +18,7 @@ var roleScout = {
                 var exit = creep.pos.findClosestByRange(route[0].exit);
                 creep.moveTo(exit);
             }
-        }
-        //RESERVE CONTROLLER IN TARGET ROOM (NOT WORKING, CREEP IS SWITCHING BETWEEN TARGET ROM AND THE ONE BEFORE THAT)
-        else {
+        } else {
             if (creep.room.controller) {
                 if (creep.reserveController(creep.room.controller) == ERR_NOT_IN_RANGE) {
                     creep.moveTo(creep.room.controller);
