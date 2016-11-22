@@ -24,9 +24,10 @@ module.exports.loop = function() {
     var maxRepair = vars.maxRepair;
     var maxHarvester = vars.maxHarvester;
     var maxUpgrader = vars.maxUpgrader;
+    var debug = vars.debug;
 
     if (vars.debug) {
-        console.log(vars.debug);
+        console.log(debug);
         console.log(maxMulti);
         console.log(maxRepair);
         console.log(maxHarvester);
