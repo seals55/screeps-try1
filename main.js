@@ -16,7 +16,7 @@ module.exports.loop = function() {
     var maxRepair = 1;
     var maxHarvester = 6;
     var maxUpgrader = 5;
-    var maxScout = 0;
+    var maxScout = 1;
     var debug = vars.debug;
 
     for (var name in Memory.creeps) {
