@@ -1,4 +1,3 @@
-
 var vars = require('vars');
 var helper = require('helper');
 
@@ -10,6 +9,13 @@ var newCostMatrix = require('newCostMatrix');
 
 var tower = require('tower');
 
+var maxMulti = 0;
+var maxRepair = 1;
+var maxHarvester = 8;
+var maxUpgrader = 8;
+var debug = true;
+
+
 module.exports.loop = function() {
     //console.log('tick')
 
@@ -19,14 +25,10 @@ module.exports.loop = function() {
             console.log('Clearing non-existing creep memory:', name);
         }
     }
-    
-    var maxMulti = vars.maxMulti;
-    var maxRepair = vars.maxRepair;
-    var maxHarvester = vars.maxHarvester;
-    var maxUpgrader = vars.maxUpgrader;
-    var debug = vars.debug;
 
-    if (vars.debug) {
+
+
+    if (debug) {
         console.log(debug);
         console.log(maxMulti);
         console.log(maxRepair);
