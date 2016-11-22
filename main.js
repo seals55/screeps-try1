@@ -34,6 +34,7 @@ module.exports.loop = function() {
     //Loop rooms
     for (var rm in Game.rooms) {
         var curRoom = Game.rooms[rm]
+        console.log("Current Room: "+ curRoom)
         var spawn = curRoom.find(FIND_STRUCTURES, { filter: { structureType: STRUCTURE_SPAWN } })
         //newCostMatrix.run(spawn);
         var multi = _.filter(Game.creeps, (creep) => creep.memory.role == 'multi');
