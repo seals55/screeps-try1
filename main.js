@@ -10,7 +10,7 @@ var newCostMatrix = require('newCostMatrix');
 var tower = require('tower');
 
 var maxMulti = vars.maxMulti;
-var maxRepair = vars.maxRepair;
+var maxRepair = vars.maxRepair +1;
 var maxHarvester = vars.maxHarvester;
 var maxUpgrader = vars.maxUpgrader;
 var debug = vars.debug;
