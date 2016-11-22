@@ -9,7 +9,7 @@
 
 var roleScout = {
     /** @param {Creep} creep **/
-    run: function (creep) {
+    run: function(creep) {
         moveToRoom = "W7N3"
         let a = new RoomPosition(25, 25, moveToRoom);
 

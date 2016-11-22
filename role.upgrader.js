@@ -84,7 +84,7 @@ var roleMulti = {
 
                 if (creep.withdraw(storage, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                     //helper.routeCreep(creep, storage);
-                        creep.moveTo(storage);
+                    creep.moveTo(storage);
                     //creep.say('Storage')
                 }
             }

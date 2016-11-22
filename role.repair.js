@@ -100,6 +100,9 @@ var roleRepair = {
                 //10% Damaged structure not found, try to build, and as last resort, move to spawn point
                 var targetTwo = creep.pos.findClosestByRange(FIND_CONSTRUCTION_SITES);
                 if (targetTwo == null) {
+
+
+
                     var moveToConsSpawn = ""
                     for (var rm in Game.rooms) {
                         var curRoom = Game.rooms[rm]
@@ -115,6 +118,8 @@ var roleRepair = {
                         //helper.routeCreep(creep, target);
                         creep.moveTo(target);
                     }
+
+
                 } else {
                     creep.say('building')
                     if (creep.build(targetTwo) == ERR_NOT_IN_RANGE) {

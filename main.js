@@ -19,7 +19,7 @@ module.exports.loop = function() {
     var maxHarvester = 6;
     var maxUpgrader = 5;
     var maxScout = 0;
-    var maxClaimer = 0;
+    var maxClaimer = 1;
     var debug = vars.debug;
 
     for (var name in Memory.creeps) {
