@@ -4,6 +4,7 @@ var roleMulti = require('role.multi');
 var roleRepair = require('role.repair');
 var roleHarvester = require('role.harvester');
 var roleUpgrader = require('role.upgrader');
+var roleScout = require('role.scout');
 var newCostMatrix = require('newCostMatrix');
 
 var tower = require('tower');
