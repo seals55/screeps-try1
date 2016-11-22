@@ -1,5 +1,5 @@
 function define(name, value) {
-    name = null;
+    
     Object.defineProperty(exports, name, {
         value: value,
         enumerable: true
