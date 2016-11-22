@@ -6,6 +6,8 @@
  * var mod = require('role.repair');
  * mod.thing == 'a thing'; // true
  */
+var vars = require('vars');
+
 var roleRepair = {
 
     run: function (creep) {
