@@ -35,7 +35,7 @@ module.exports.loop = function() {
     for (var rm in Game.rooms) {
         var curRoom = Game.rooms[rm]
         var spawn = curRoom.find(FIND_STRUCTURES, { filter: { structureType: STRUCTURE_SPAWN } })
-        console.log("Current Room: '" + curRoom + "' | " + "Spawn: '" + spawn + "' ");
+        console.log("Current Room: '" + curRoom + "' | " + "Spawn: '" + spawn + "' | " + "Energy: '" + curRoom.energyCapacityAvailable + "'");
 
         if (spawn) {
 
