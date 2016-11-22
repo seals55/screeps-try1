@@ -1,4 +1,3 @@
-var vars = require('vars');
 var helper = require('helper');
 
 var roleMulti = require('role.multi');
@@ -48,7 +47,7 @@ module.exports.loop = function() {
         var upgrader = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader');
 
         if (multi.length < maxMulti || repair.length < maxRepair || harvester.length < maxHarvester || upgrader.length < maxUpgrader) {
-            if (vars.debug) { console.log('Multi:' + multi.length + '/' + maxMulti + ', Harvester:' + harvester.length + '/' + maxHarvester + ', Repair:' + repair.length + '/' + maxRepair + ', Upgrader:' + upgrader.length + '/' + maxUpgrader + ', Total Creeps:' + _.filter(Game.creeps).length); };
+            if (debug) { console.log('Multi:' + multi.length + '/' + maxMulti + ', Harvester:' + harvester.length + '/' + maxHarvester + ', Repair:' + repair.length + '/' + maxRepair + ', Upgrader:' + upgrader.length + '/' + maxUpgrader + ', Total Creeps:' + _.filter(Game.creeps).length); };
         }
 
         if (multi.length < maxMulti) {
