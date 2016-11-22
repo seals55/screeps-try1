@@ -9,7 +9,7 @@ var newCostMatrix = require('newCostMatrix');
 
 var tower = require('tower');
 
-module.exports.loop = function() {
+module.exports.loop = function () {
     //console.log('tick')
 
     var maxMulti = vars.maxMulti;
@@ -25,15 +25,13 @@ module.exports.loop = function() {
         }
     }
 
-
-
-    // if (debug) {
-    //     console.log(debug);
-    //     console.log(maxMulti);
-    //     console.log(maxRepair);
-    //     console.log(maxHarvester);
-    //     console.log(maxUpgrader);
-    // };
+    if (debug) {
+        console.log(debug);
+        console.log(maxMulti);
+        console.log(maxRepair);
+        console.log(maxHarvester);
+        console.log(maxUpgrader);
+    };
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////
     //Loop rooms
