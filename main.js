@@ -48,6 +48,7 @@ module.exports.loop = function() {
 
         var multi = _.filter(Game.creeps, (creep) => creep.memory.role == 'multi');
         var repair = _.filter(Game.creeps, (creep) => creep.memory.role == 'repair');
+        //var repair = _.filter(Game.creeps, (creep && (creep.room == curRoom)) => creep.memory.role == 'repair');
         var harvester = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester');
         var upgrader = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader');
         var scout = _.filter(Game.creeps, (creep) => creep.memory.role == 'scout');
