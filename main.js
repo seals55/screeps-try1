@@ -10,12 +10,6 @@ var newCostMatrix = require('newCostMatrix');
 
 var tower = require('tower');
 
-// var maxMulti = 0;
-// var maxRepair = 2;
-// var maxHarvester = 4;
-// var maxUpgrader = 4;
-
-
 module.exports.loop = function() {
     //console.log('tick')
 
