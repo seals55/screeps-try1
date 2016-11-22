@@ -3,6 +3,8 @@ var maxRepair = 2;
 var maxHarvester = 4;
 var maxUpgrader = 4;
 
+var vars = require('vars');
+
 var helper = require('helper');
 
 var roleMulti = require('role.multi');

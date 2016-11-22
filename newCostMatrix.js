@@ -6,6 +6,7 @@
  * var mod = require('CostMatrix');
  * mod.thing == 'a thing'; // true
  */
+var vars = require('vars');
 
 var newCostMatrix = {
 

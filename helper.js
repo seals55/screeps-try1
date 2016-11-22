@@ -7,6 +7,8 @@
  * mod.thing == 'a thing'; // true
  */
 
+var vars = require('vars');
+
 module.exports = {
     maxEnergy: function(curRoom) {
         try {
