@@ -6,17 +6,17 @@
  * var mod = require('role.multi');
  * mod.thing == 'a thing'; // true
  */
- 
+
 var roleMulti = {
 
     /** @param {Creep} creep **/
     run: function(creep) {
-        if(creep.carry.energy == 0){
+        if (creep.carry.energy == 0) {
             creep.memory.working = false;
         }
-        if(creep.carry.energy < creep.carryCapacity && creep.memory.working == false) {
+        if (creep.carry.energy < creep.carryCapacity && creep.memory.working == false) {
             //init vars
-            var storage = creep.pos.findClosestByRange(FIND_STRUCTURES, { filter: (structure) => { return (structure.structureType == STRUCTURE_STORAGE ) && structure.store[RESOURCE_ENERGY] > 0; } });
+            var storage = creep.pos.findClosestByRange(FIND_STRUCTURES, { filter: (structure) => { return (structure.structureType == STRUCTURE_STORAGE) && structure.store[RESOURCE_ENERGY] > 0; } });
             var sources = creep.room.find(FIND_SOURCES);
             var creepCount = new Array()
             if (storage == null) {
@@ -31,7 +31,7 @@ var roleMulti = {
                         }
                     }
                     for (i = 0; i < sources.length; i++) {
-                        for(var cName in Game.creeps) {
+                        for (var cName in Game.creeps) {
                             var cre = Game.creeps[cName];
                             if (cre.memory.harSource != -1) {
                                 creepCount[cre.memory.harSource] += 1;
@@ -39,7 +39,7 @@ var roleMulti = {
                             }
                         }
                     }
-                    
+
                     //console.log('CreepCount[0]: ' + creepCount[0] + ' CreepCount[1]: ' + creepCount[1])
                     /////////////////////////////////////////////////////////////////////////////////////////////////////////
                     //Determine best source to send creep to
@@ -53,7 +53,7 @@ var roleMulti = {
                     }
                     //console.log('LowestCreepSource: ' +lowestCreepSource)
                     creep.memory.harSource = lowestCreepSource;
-                    
+
                     var sourceFound = false;
                     for (i = 0; i < sources.length; i++) {
                         if (sources[i].energy > 0) {
@@ -64,8 +64,8 @@ var roleMulti = {
                 }
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////
                 //Send creep to source
-                if(sourceFound == true) {
-                    if(creep.harvest(sources[creep.memory.harSource]) == ERR_NOT_IN_RANGE) {
+                if (sourceFound == true) {
+                    if (creep.harvest(sources[creep.memory.harSource]) == ERR_NOT_IN_RANGE) {
                         creep.moveTo(sources[creep.memory.harSource]);
                         //creep.say('move to ' + creep.memory.harSource)
                     }
@@ -77,10 +77,10 @@ var roleMulti = {
             } else {
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////
                 //Pull energy from storage (preferred)
-                
-                if(creep.withdraw(storage,RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                        creep.moveTo(storage);
-                        //creep.say('Storage')
+
+                if (creep.withdraw(storage, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(storage);
+                    //creep.say('Storage')
                 }
             }
         } else {
@@ -89,7 +89,7 @@ var roleMulti = {
             creep.memory.working = true;
             creep.memory.harSource = -1;
 
-            if(creep.upgradeController(creep.room.controller) == ERR_NOT_IN_RANGE) {
+            if (creep.upgradeController(creep.room.controller) == ERR_NOT_IN_RANGE) {
                 creep.moveTo(creep.room.controller);
             }
         }

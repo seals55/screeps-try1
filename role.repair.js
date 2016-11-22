@@ -7,17 +7,17 @@
  * mod.thing == 'a thing'; // true
  */
 var roleRepair = {
-    
-run: function(creep) {
 
-        if(creep.carry.energy == 0){
+    run: function (creep) {
+
+        if (creep.carry.energy == 0) {
             creep.memory.working = false;
         }
-        if(creep.carry.energy < creep.carryCapacity && creep.memory.working == false) {
+        if (creep.carry.energy < creep.carryCapacity && creep.memory.working == false) {
             //init vars
             var sources = creep.room.find(FIND_SOURCES);
             var creepCount = new Array()
-            
+
             /////////////////////////////////////////////////////////////////////////////////////////////////////////
             //Has harvesting source been determined? Check
             if (creep.memory.harSource = -1) {
@@ -29,7 +29,7 @@ run: function(creep) {
                     }
                 }
                 for (i = 0; i < sources.length; i++) {
-                    for(var cName in Game.creeps) {
+                    for (var cName in Game.creeps) {
                         var cre = Game.creeps[cName];
                         if (cre.memory.harSource != -1) {
                             creepCount[cre.memory.harSource] += 1;
@@ -37,7 +37,7 @@ run: function(creep) {
                         }
                     }
                 }
-                
+
                 //console.log('CreepCount[0]: ' + creepCount[0] + ' CreepCount[1]: ' + creepCount[1])
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////
                 //Determine best source to send creep to
@@ -54,37 +54,37 @@ run: function(creep) {
             }
             /////////////////////////////////////////////////////////////////////////////////////////////////////////
             //Send creep to source
-            if(creep.harvest(sources[creep.memory.harSource]) == ERR_NOT_IN_RANGE) {
+            if (creep.harvest(sources[creep.memory.harSource]) == ERR_NOT_IN_RANGE) {
                 creep.moveTo(sources[creep.memory.harSource]);
                 //creep.say('move to ' + creep.memory.harSource)
             }
-            
+
         } else {
             /////////////////////////////////////////////////////////////////////////////////////////////////////////
             //Harvesting complete.  Reinit and distribute to task
             creep.memory.working = true;
             creep.memory.harSource = -1;
-            
+
             /////////////////////////////////////////////////////////////////////////////////////////////////////////
             //Search for structure with less then max energy
             //////pos.findClosestByPath //creep.room.find  //structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_SPAWN || structure.structureType == STRUCTURE_CONTAINER ||
             //structure.structureType == STRUCTURE_ROAD &&
             var percent = 0;
             if (creep.room.find(FIND_CONSTRUCTION_SITES) != null) {
-                percent=0.5;
+                percent = 0.5;
             } else {
-                percent=0.9;
+                percent = 0.9;
             }
-            var target = creep.pos.findClosestByRange(FIND_STRUCTURES, { filter: (structure) => 
-                                                                {
-                                                                    return (structure.hits < (structure.hitsMax * percent));
-                                                                }
-                                                            });
-            if(target != null) {
+            var target = creep.pos.findClosestByRange(FIND_STRUCTURES, {
+                filter: (structure) => {
+                    return (structure.hits < (structure.hitsMax * percent));
+                }
+            });
+            if (target != null) {
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////
                 //Damaged structure found, move and repair
                 var resp = creep.repair(target)
-                if(resp == ERR_NOT_IN_RANGE) {
+                if (resp == ERR_NOT_IN_RANGE) {
                     creep.moveTo(target);
                 } else if (resp == OK) {
                     creep.say('Repairing')
@@ -98,8 +98,7 @@ run: function(creep) {
                     creep.moveTo(target);
                 } else {
                     creep.say('building')
-                    if(creep.build(targetTwo) == ERR_NOT_IN_RANGE)
-                    {
+                    if (creep.build(targetTwo) == ERR_NOT_IN_RANGE) {
                         /////////////////////////////////////////////////////////////////////////////////////////////////////////
                         //Buildable structures found, deploy
                         creep.moveTo(targetTwo);
