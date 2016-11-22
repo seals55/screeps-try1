@@ -96,7 +96,7 @@ var roleMulti = {
                     return (structure.structureType == STRUCTURE_TOWER)
                         && (structure.energy + 800 < structure.energyCapacity);
                 }
-            });            
+            });
             if (!target) {
                 var target = creep.pos.findClosestByRange(FIND_STRUCTURES, {
                     filter: (structure) => {
@@ -108,7 +108,7 @@ var roleMulti = {
                     }
                 });
             }
-console.log(target)
+            console.log("Harvester target: " + target)
 
             //structure.store[RESOURCE_ENERGY] < structure.storeCapacity
             if (target == null) {
