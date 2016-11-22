@@ -12,9 +12,11 @@ var roleScout = {
     /** @param {Creep} creep **/
     run: function (creep) {
         var sources = creep.room.find(FIND_STRUCTURES, {
-                filter: (structure) => {
-                    return (structure.structureType == STRUCTURE_CONTROLLER)}});
-        
+            filter: (structure) => {
+                return (structure.structureType == STRUCTURE_CONTROLLER)
+            }
+        });
+
         if (sources[0]) {
             //move off page
             //move DIR
