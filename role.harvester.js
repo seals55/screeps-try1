@@ -116,7 +116,7 @@ var roleMulti = {
                 var target = creep.pos.findClosestByRange(FIND_STRUCTURES, {
                     filter: (structure) => {
                         return (structure.structureType == STRUCTURE_TOWER)
-                            && (structure.energy < structure.energyCapacity)
+                            && (structure.energy < structure.energyCapacity);
 
                     }
                 });
