@@ -13,7 +13,7 @@ var helper = require('helper');
 var roleMulti = {
 
     /** @param {Creep} creep **/
-    run: function(creep) {
+    run: function (creep) {
         if (creep.carry.energy == 0) {
             creep.memory.working = false;
         }
@@ -69,14 +69,14 @@ var roleMulti = {
             var dropenergy = creep.pos.findClosestByPath(FIND_DROPPED_ENERGY, { filter: (d) => { return (d.resourceType == RESOURCE_ENERGY) } });
             if (dropenergy) {
                 if (creep.pickup(dropenergy) == ERR_NOT_IN_RANGE) {
-                    helper.routeCreep(creep,dropenergy);
+                    helper.routeCreep(creep, dropenergy);
                 }
             } else {
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////
                 //Send creep to source
                 if (sourceFound == true) {
                     if (creep.harvest(sources[creep.memory.harSource]) == ERR_NOT_IN_RANGE) {
-                        helper.routeCreep(creep,sources[creep.memory.harSource]);
+                        helper.routeCreep(creep, sources[creep.memory.harSource]);
                         //creep.say('move to ' + creep.memory.harSource)
                     }
                 } else {
@@ -134,7 +134,7 @@ var roleMulti = {
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////
                 //Structures found, deposit energy
                 if (creep.transfer(target, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                    helper.routeCreep(creep,target);
+                    helper.routeCreep(creep, target);
                 }
             } else {
                 //move to an extension
@@ -144,7 +144,7 @@ var roleMulti = {
                     }
                 });
                 if (targetTwo != null) {
-                    helper.routeCreep(creep,targetTwo);
+                    helper.routeCreep(creep, targetTwo);
                 }
 
             }

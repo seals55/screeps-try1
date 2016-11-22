@@ -13,7 +13,7 @@ var helper = require('helper');
 var roleMulti = {
 
     /** @param {Creep} creep **/
-    run: function(creep) {
+    run: function (creep) {
         if (creep.carry.energy == 0) {
             creep.memory.working = false;
         }
@@ -69,7 +69,7 @@ var roleMulti = {
                 //Send creep to source
                 if (sourceFound == true) {
                     if (creep.harvest(sources[creep.memory.harSource]) == ERR_NOT_IN_RANGE) {
-                        helper.routeCreep(creep,sources[creep.memory.harSource]);
+                        helper.routeCreep(creep, sources[creep.memory.harSource]);
                         //creep.say('move to ' + creep.memory.harSource)
                     }
                 } else {
@@ -82,7 +82,7 @@ var roleMulti = {
                 //Pull energy from storage (preferred)
 
                 if (creep.withdraw(storage, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                        helper.routeCreep(creep,storage);
+                    helper.routeCreep(creep, storage);
                     //creep.say('Storage')
                 }
             }
@@ -93,7 +93,7 @@ var roleMulti = {
             creep.memory.harSource = -1;
 
             if (creep.upgradeController(creep.room.controller) == ERR_NOT_IN_RANGE) {
-                helper.routeCreep(creep,creep.room.controller);
+                helper.routeCreep(creep, creep.room.controller);
             }
         }
     }

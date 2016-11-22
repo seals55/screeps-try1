@@ -12,7 +12,7 @@ var debug = vars.debug;
 
 var newCostMatrix = {
 
-    run: function(rm) {
+    run: function (rm) {
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         //Set roads to cost 1 to prefer road pathfinding        
