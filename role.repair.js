@@ -101,19 +101,19 @@ var roleRepair = {
                 var targetTwo = creep.pos.findClosestByRange(FIND_CONSTRUCTION_SITES);
                 if (targetTwo == null) {
                     var moveToConsSpawn = ""
-                    for(var rm in Game.rooms){
+                    for (var rm in Game.rooms) {
                         var curRoom = Game.rooms[rm]
                         var spawn = Game.rooms[rm].find(FIND_CONSTRUCTION_SITES, { filter: (structure) => { return (structure.structureType == STRUCTURE_SPAWN); } })
                         if (spawn[0] != null) {
                             moveToConsSpawn = spawn[0]
                         }
                     }
-                    if (moveToConsSpawn != ""){
+                    if (moveToConsSpawn != "") {
                         creep.moveTo(moveToConsSpawn);
                     } else {
-                    var target = creep.pos.findClosestByRange(FIND_STRUCTURES, { filter: (structure) => { return (structure.structureType == STRUCTURE_SPAWN); } });
-                    //helper.routeCreep(creep, target);
-                    creep.moveTo(target);
+                        var target = creep.pos.findClosestByRange(FIND_STRUCTURES, { filter: (structure) => { return (structure.structureType == STRUCTURE_SPAWN); } });
+                        //helper.routeCreep(creep, target);
+                        creep.moveTo(target);
                     }
                 } else {
                     creep.say('building')

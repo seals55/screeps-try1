@@ -70,7 +70,7 @@ var roleMulti = {
             if (dropenergy) {
                 if (creep.pickup(dropenergy) == ERR_NOT_IN_RANGE) {
                     //helper.routeCreep(creep, dropenergy);
-		    creep.moveTo(dropenergy);
+                    creep.moveTo(dropenergy);
                 }
             } else {
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////
