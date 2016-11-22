@@ -37,7 +37,7 @@ module.exports.loop = function() {
         console.log("Current Room: " + curRoom)
 
         var spawn = curRoom.find(FIND_STRUCTURES, { filter: { structureType: STRUCTURE_SPAWN } })
-        if (!spawn) {
+        if (spawn != undefined) {
 
             //newCostMatrix.run(spawn);
 
