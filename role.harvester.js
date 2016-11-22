@@ -6,9 +6,8 @@
  * var mod = require('role.multi');
  * mod.thing == 'a thing'; // true
  */
-//var vars = require('vars');
-var debug = true;
-
+var vars = require('vars');
+var debug = vars.debug;
 
 var roleMulti = {
 
