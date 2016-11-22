@@ -13,10 +13,10 @@ var roleScout = {
         moveToRoom = "W7N3"
         let a = new RoomPosition(25, 25, moveToRoom);
 
-        console.log(creep.name + " room: '" + creep.room.room + "' | Wants Room: '" + moveToRoom + "'")
+        console.log(creep.name + " room: '" + creep.room.name + "' | Wants Room: '" + moveToRoom + "'")
 
         //MOVE TO TARGET ROOM
-        if (creep.room[0] != moveToRoom) {
+        if (creep.room.name != moveToRoom) {
 
             // var route = Game.map.findRoute(creep.room, moveToRoom);
             // if (route.length > 0) {
@@ -32,7 +32,7 @@ var roleScout = {
             if (creep.room.controller) {
                 if (creep.reserveController(creep.room.controller) == ERR_NOT_IN_RANGE) {
                     creep.moveTo(creep.room.controller);
-                    creep.say("Claiming Room")
+                    creep.say("Claiming...")
                 }
             }
         }
