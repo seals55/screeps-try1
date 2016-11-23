@@ -133,10 +133,10 @@ module.exports = {
                         return 2;
                         break;
                     case ('harvester'):
-                        return 6;
+                        return 5;
                         break;
                     case ('upgrader'):
-                        return 6;
+                        return 5;
                         break;
                     case ('claimer'):
                         return 0;
