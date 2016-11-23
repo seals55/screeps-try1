@@ -152,7 +152,7 @@ module.exports = {
                         return 2;
                         break;
                     case ('repair'):
-                        return 2;
+                        return 1;
                         break;
                     case ('harvester'):
                         return 5;
@@ -174,7 +174,7 @@ module.exports = {
                         return 2;
                         break;
                     case ('repair'):
-                        return 2;
+                        return 1;
                         break;
                     case ('harvester'):
                         return 5;
