@@ -27,7 +27,11 @@ module.exports.loop = function () {
     for (var rm in Game.rooms) {
         var curRoom = Game.rooms[rm]
         var spawn = curRoom.find(FIND_STRUCTURES, {filter: { structureType: STRUCTURE_SPAWN } })
+        //
+        //
         //helper.buildRoads(curRoom);
+        //
+        //        
         var multi = _.filter(Game.creeps, (creep) => creep.memory.role == 'multi' && curRoom.name == creep.room.name);
         var repair = _.filter(Game.creeps, (creep) => creep.memory.role == 'repair' && curRoom.name == creep.room.name);
         var harvester = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester' && curRoom.name == creep.room.name);
