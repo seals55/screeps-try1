@@ -161,7 +161,7 @@ module.exports = {
                         return 5;
                         break;
                     case ('claimer'):
-                        return 1;
+                        return 0;
                         break;
                     default:
                         return false;
