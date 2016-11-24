@@ -3,7 +3,7 @@ var helper = require('helper');
 var roleMulti = {
 
     /** @param {Creep} creep **/
-    run: function(creep) {
+    run: function (creep) {
         if (creep.carry.energy == 0) {
             creep.memory.working = false;
         }
@@ -65,8 +65,8 @@ var roleMulti = {
             } else if (creep.carry.energy == 0) {
                 //move to bored flag
                 console.log(creep.room.name + ' Multi moving to bored')
-                for (var flag in Game.flags){
-                    if (Game.flags[flag].pos.roomName == creep.room.name && creep.room.name.substring(0,5) == 'Bored') {
+                for (var flag in Game.flags) {
+                    if (Game.flags[flag].pos.roomName == creep.room.name && creep.room.name.substring(0, 5) == 'Bored') {
                         creep.moveTo(Game.flags[flag]);
                         break;
                     }
