@@ -100,12 +100,13 @@ var roleRepair = {
             } else {
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////
                 //Damaged structure not found, try to build, and as last resort, move to spawn point
-                var targetTwo = creep.pos.findClosestByPath(FIND_CONSTRUCTION_SITES, { filter: (s) => s.structureType != STRUCTURE_ROAD });
+                var targetTwo = null;
+                targetTwo = creep.pos.findClosestByPath(FIND_CONSTRUCTION_SITES, { filter: (s) => s.structureType != STRUCTURE_ROAD });
                 console.log(creep.name + " --------- '" + targetTwo + "'");
                 if (targetTwo == 'null' ) {
                     // find closest constructionSite
                     console.log(creep.name + " moving to build " + targetTwo);
-                    var targetTwo = creep.pos.findClosestByRange(FIND_CONSTRUCTION_SITES);
+                    targetTwo = creep.pos.findClosestByRange(FIND_CONSTRUCTION_SITES);
                 }
 
                 if (targetTwo == undefined) {
