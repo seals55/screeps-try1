@@ -1,13 +1,3 @@
-/*
- * Module code goes here. Use 'module.exports' to export things:
- * module.exports.thing = 'a thing';
- *
- * You can import it from another modules like this:
- * var mod = require('role.multi');
- * mod.thing == 'a thing'; // true
- */
-var vars = require('vars');
-var debug = vars.debug;
 var helper = require('helper');
 
 var roleMulti = {

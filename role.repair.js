@@ -1,13 +1,3 @@
-/*
- * Module code goes here. Use 'module.exports' to export things:
- * module.exports.thing = 'a thing';
- *
- * You can import it from another modules like this:
- * var mod = require('role.repair');
- * mod.thing == 'a thing'; // true
- */
-var vars = require('vars');
-var debug = vars.debug;
 var helper = require('helper');
 
 var roleRepair = {
@@ -61,7 +51,19 @@ var roleRepair = {
             if (creep.harvest(sources[creep.memory.harSource]) == ERR_NOT_IN_RANGE) {
                 //helper.routeCreep(creep, sources[creep.memory.harSource]);
                 creep.moveTo(sources[creep.memory.harSource]);
-                //creep.say('move to ' + creep.memory.harSource)
+            } else if (creep.carry.energy == 0) {
+                //move to bored flag
+                console.log(creep.room.name + ' Repair moving to bored')
+                for (var flag in Game.flags){
+                    if (Game.flags[flag].pos.roomName == creep.room.name && creep.room.name.substring(0,5) == 'Bored') {
+                        creep.moveTo(Game.flags[flag]);
+                        break;
+                    }
+                }
+            } else {
+                //No source energy avail, attempt to work
+                creep.memory.working = true;
+                creep.memory.harSource = -1;
             }
 
         } else {
@@ -97,7 +99,7 @@ var roleRepair = {
                 }
             } else {
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////
-                //10% Damaged structure not found, try to build, and as last resort, move to spawn point
+                //Damaged structure not found, try to build, and as last resort, move to spawn point
                 var targetTwo = creep.pos.findClosestByRange(FIND_CONSTRUCTION_SITES);
                 if (targetTwo == null) {
 
@@ -113,10 +115,6 @@ var roleRepair = {
                     }
                     if (moveToConsSpawn != "") {
                         creep.moveTo(moveToConsSpawn);
-                    } else {
-                        var target = creep.pos.findClosestByRange(FIND_STRUCTURES, { filter: (structure) => { return (structure.structureType == STRUCTURE_SPAWN); } });
-                        //helper.routeCreep(creep, target);
-                        creep.moveTo(target);
                     }
 
 
