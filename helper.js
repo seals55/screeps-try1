@@ -1,14 +1,3 @@
-/*
- * Module code goes here. Use 'module.exports' to export things:
- * module.exports.thing = 'a thing';
- *
- * You can import it from another modules like this:
- * var mod = require('helper');
- * mod.thing == 'a thing'; // true
- */
-var vars = require('vars');
-var debug = vars.debug;
-
 module.exports = {
     maxCreep: function(curRoom, role) {
         var target = curRoom.find(FIND_STRUCTURES, { filter: (structure) => { return (structure.structureType == STRUCTURE_CONTROLLER); } });
@@ -39,10 +28,10 @@ module.exports = {
             case (1):
                 switch (role) {
                     case ('multi'):
-                        return 0;
+                            return 2;
                         break;
                     case ('repair'):
-                        return 2;
+                            return 4;
                         break;
                     case ('harvester'):
                         return 4;
@@ -64,7 +53,7 @@ module.exports = {
                         return 2;
                         break;
                     case ('repair'):
-                        return 2;
+                            return 4;
                         break;
                     case ('harvester'):
                         return 6;
@@ -133,10 +122,10 @@ module.exports = {
                         return 2;
                         break;
                     case ('harvester'):
-                        return 5;
+                            return 6;
                         break;
                     case ('upgrader'):
-                        return 5;
+                            return 6;
                         break;
                     case ('claimer'):
                         return 0;
@@ -152,10 +141,10 @@ module.exports = {
                         return 2;
                         break;
                     case ('repair'):
-                        return 1;
+                            return 2;
                         break;
                     case ('harvester'):
-                        return 5;
+                            return 3;
                         break;
                     case ('upgrader'):
                         return 5;
@@ -174,7 +163,7 @@ module.exports = {
                         return 2;
                         break;
                     case ('repair'):
-                        return 1;
+                            return 2;
                         break;
                     case ('harvester'):
                         return 5;
