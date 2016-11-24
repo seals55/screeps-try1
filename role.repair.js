@@ -106,6 +106,7 @@ var roleRepair = {
                     // find closest constructionSite
                     console.log(creep.name + " moving to build " + targetTwo)
                     var targetTwo = creep.pos.findClosestByRange(FIND_CONSTRUCTION_SITES);
+                    
                 }
                 if (targetTwo == null) {
                     var moveToConsSpawn = ""
@@ -122,6 +123,7 @@ var roleRepair = {
 
 
                 } else {
+                    console.log(creep.name + " moving to build " + targetTwo)
                     creep.say('building')
                     if (creep.build(targetTwo) == ERR_NOT_IN_RANGE) {
                         /////////////////////////////////////////////////////////////////////////////////////////////////////////
