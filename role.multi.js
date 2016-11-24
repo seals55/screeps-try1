@@ -102,7 +102,11 @@ var roleMulti = {
             } else {
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////
                 //Check for buildable structures
-                var targetTwo = creep.pos.findClosestByRange(FIND_CONSTRUCTION_SITES);
+                var targetTwo = creep.pos.findClosestByPath(FIND_CONSTRUCTION_SITES, { filter: (s) => s.structureType != STRUCTURE_ROAD });
+                if (targetTwo == null) {
+                    // find closest constructionSite
+                    var targetTwo = creep.pos.findClosestByRange(FIND_CONSTRUCTION_SITES);
+                }
                 if (creep.build(targetTwo) == ERR_NOT_IN_RANGE) {
                     /////////////////////////////////////////////////////////////////////////////////////////////////////////
                     //Buildable structures found, deploy
