@@ -1,13 +1,3 @@
-/*
- * Module code goes here. Use 'module.exports' to export things:
- * module.exports.thing = 'a thing';
- *
- * You can import it from another modules like this:
- * var mod = require('role.multi');
- * mod.thing == 'a thing'; // true
- */
-var vars = require('vars');
-var debug = vars.debug;
 var helper = require('helper');
 
 var roleMulti = {
@@ -71,6 +61,15 @@ var roleMulti = {
                     //helper.routeCreep(creep, sources[creep.memory.harSource]);
                     creep.moveTo(sources[creep.memory.harSource]);
                     //creep.say('move to ' + creep.memory.harSource)
+                }
+            } else if (creep.carry.energy == 0) {
+                //move to bored flag
+                console.log(creep.room.name + ' Multi moving to bored')
+                for (var flag in Game.flags){
+                    if (Game.flags[flag].pos.roomName == creep.room.name && creep.room.name.substring(0,5) == 'Bored') {
+                        creep.moveTo(Game.flags[flag]);
+                        break;
+                    }
                 }
             } else {
                 //No source energy avail, attempt to work
