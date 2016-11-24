@@ -2,7 +2,7 @@ var helper = require('helper');
 
 var roleRepair = {
 
-    run: function(creep) {
+    run: function (creep) {
 
         if (creep.carry.energy == 0) {
             creep.memory.working = false;
@@ -54,8 +54,8 @@ var roleRepair = {
             } else if (creep.carry.energy == 0) {
                 //move to bored flag
                 console.log(creep.room.name + ' Repair moving to bored')
-                for (var flag in Game.flags){
-                    if (Game.flags[flag].pos.roomName == creep.room.name && creep.room.name.substring(0,5) == 'Bored') {
+                for (var flag in Game.flags) {
+                    if (Game.flags[flag].pos.roomName == creep.room.name && creep.room.name.substring(0, 5) == 'Bored') {
                         creep.moveTo(Game.flags[flag]);
                         break;
                     }
@@ -100,7 +100,12 @@ var roleRepair = {
             } else {
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////
                 //Damaged structure not found, try to build, and as last resort, move to spawn point
-                var targetTwo = creep.pos.findClosestByRange(FIND_CONSTRUCTION_SITES);
+
+                var targetTwo = creep.pos.findClosestByPath(FIND_CONSTRUCTION_SITES, { filter: (s) => s.structureType != STRUCTURE_ROAD });
+                if (targetTwo == null) {
+                    // find closest constructionSite
+                    var targetTwo = creep.pos.findClosestByRange(FIND_CONSTRUCTION_SITES);
+                }
                 if (targetTwo == null) {
                     var moveToConsSpawn = ""
                     for (var rm in Game.rooms) {
@@ -111,11 +116,6 @@ var roleRepair = {
                         }
                     }
                     if (moveToConsSpawn != "") {
-                        var moveToConsSpawn = creep.pos.findClosestByPath(FIND_CONSTRUCTION_SITES, { filter: (s) => s.structureType != STRUCTURE_ROAD });
-                        if (!constructionSite) {
-                        // find closest constructionSite
-                        var moveToConsSpawn = creep.pos.findClosestByPath(FIND_CONSTRUCTION_SITES);
-                        }
                         creep.moveTo(moveToConsSpawn);
                     }
 
