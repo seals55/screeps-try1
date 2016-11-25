@@ -6,14 +6,14 @@ module.exports = {
                 return (s.structureType == STRUCTURE_ROAD);
             }
         });
-        for (var i in structs) {
-            var rc = i.remove();
+        
+            var rc = structs[0].remove();
             if (rc == 0) {
                 return true;
             } else {
                 return false;
             }
-        }
+        
     },
     buildRoads: function(curRoom) {
         /*
