@@ -3,7 +3,7 @@ module.exports = {
         if (curRoom == null) { return false; }
         var structs = curRoom.find(FIND_STRUCTURES, {
             filter: (s) => {
-                return (s.structureType == STRUCTURE_ROAD );                
+                return (s.structureType == STRUCTURE_ROAD && ( s.progress != s.progressTotal ) );                
             }            
         });        
 
