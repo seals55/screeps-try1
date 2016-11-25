@@ -3,9 +3,11 @@ module.exports = {
         if (curRoom == null) { return false; }
         var structs = curRoom.find(FIND_STRUCTURES, {
             filter: (s) => {
-                return (s.structureType == STRUCTURE_ROAD && ( s.progress != s.progressTotal ) );                
+                return (s.structureType == STRUCTURE_ROAD && ( s.progress < s.progressTotal ) );                
             }            
         });        
+        
+        console.log("Total unfinished roads: " + structs.length);
 
         for (i in structs) {
             //console.log("structs: '" + i + "'");
