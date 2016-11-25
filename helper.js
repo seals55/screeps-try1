@@ -1,23 +1,12 @@
 module.exports = {
-    removeUnfinishedRoads: function (curRoom) {
+    removeUnfinishedRoads: function(curRoom) {
         if (curRoom == null) { return false; }
         var structs = curRoom.find(FIND_STRUCTURES, {
             filter: (s) => {
                 return (s.structureType == STRUCTURE_ROAD);
             }
         });
-        var sources = curRoom.find(FIND_SOURCES);
-
-        var positions = structs.concat(sources);
-        //console.log(curRoom.name + ': '+ positions.length);
-
-        var randOne = Math.floor((Math.random() * positions.length) + 0);
-        var randTwo = Math.floor((Math.random() * positions.length) + 0);
-        //console.log(randOne + '    '+ randTwo)
-        if (randOne != randTwo) {
-            //console.log('1: '+positions[randOne] + ', 2: ' +positions[randTwo])
-            var path = curRoom.findPath(positions[randOne].pos, positions[randTwo].pos, { ignoreRoads: true, heuristicWeight: 1000 });
-            for (var i in path) {
+        for (var i in structs) {
                 var cons = curRoom.createConstructionSite(path[i].x, path[i].y, STRUCTURE_ROAD);
                 if (cons == ERR_FULL) {
                     break;
@@ -46,7 +35,7 @@ module.exports = {
         }*/
 
     },
-    buildRoads: function (curRoom) {
+    buildRoads: function(curRoom) {
         /*
         + 	OwnedStructure 
         � 	+ 	StructureController --yes
@@ -119,7 +108,7 @@ module.exports = {
         }*/
 
     },
-    maxCreep: function (curRoom, role) {
+    maxCreep: function(curRoom, role) {
         var target = curRoom.find(FIND_STRUCTURES, { filter: (structure) => { return (structure.structureType == STRUCTURE_CONTROLLER); } });
         if (target[0] == null) { return false; }
         switch (target[0].level) {
@@ -326,7 +315,7 @@ module.exports = {
                 break;
         }
     },
-    maxEnergy: function (curRoom) {
+    maxEnergy: function(curRoom) {
         try {
             var targets = curRoom.find(FIND_STRUCTURES, { filter: (structure) => { return (structure.structureType == STRUCTURE_SPAWN || structure.structureType == STRUCTURE_EXTENSION); } });
             var total = 0
@@ -339,7 +328,7 @@ module.exports = {
             return false;
         }
     },
-    curEnergy: function (curRoom) {
+    curEnergy: function(curRoom) {
         try {
             var targets = curRoom.find(FIND_STRUCTURES, { filter: (structure) => { return (structure.structureType == STRUCTURE_SPAWN || structure.structureType == STRUCTURE_EXTENSION); } });
             var total = 0
@@ -352,7 +341,7 @@ module.exports = {
             return false;
         }
     },
-    calcBody: function (curRoom, role) {
+    calcBody: function(curRoom, role) {
         try {
             // lvl 1:  300
             // lvl 2:  550
@@ -450,7 +439,7 @@ module.exports = {
         }
     },
 
-    routeCreep: function (creep, dest) {
+    routeCreep: function(creep, dest) {
         if (creep.fatigue > 0) { return -1; }
         if (typeof dest == "undefined") { return -1; }
 
@@ -515,7 +504,7 @@ module.exports = {
         return error;
     },
 
-    pathisBlocked: function (position, dir) {
+    pathisBlocked: function(position, dir) {
         switch (dir) {
             case (1)://top
                 position.y -= 1;
@@ -557,7 +546,7 @@ module.exports = {
 
     },
 
-    isEnterable: function (pos) {
+    isEnterable: function(pos) {
         var atPos = pos.look();
         var SWAMP = "swamp";
         var PLAIN = "plain";
