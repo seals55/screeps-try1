@@ -8,30 +8,12 @@ module.exports = {
         });
         for (var i in structs) {
             i.remove()
-            }
+
             return true;
         } else {
             return false;
-        }
+        },
 
-        /*for (var posOne in positions) {
-            for (var posTwo in positions) {
-                if (posOne == posTwo) {
-                    //Build Road 1 block around structure
-                    //lookForAt
-                } else {
-                    var path = curRoom.findPath(posOne,posTwo, {ignoreRoads: true});
-                    console.log(path);
-                    if (path != null) {
-                        for (var i in path) {
-                            //var cons = curRoom.createConstructionSite(i.x,i.y,STRUCTURE_ROAD);
-                        }
-                    }
-                }
-            }
-        }*/
-
-    },
     buildRoads: function(curRoom) {
         /*
         + 	OwnedStructure 
