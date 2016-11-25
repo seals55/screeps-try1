@@ -1,21 +1,20 @@
 module.exports = {
-    removeUnfinishedRoads: function(curRoom) {        
+    removeUnfinishedRoads: function(curRoom) {
         if (curRoom == null) { return false; }
-        var structs = curRoom.find(FIND_CONSTRUCTION_SITES, { filter: (structure) => { return (      structure.structureType == STRUCTURE_ROAD            ); } })        
-        
-        console.log("Room '"+curRoom.name+"'Total unfinished roads: " + structs.length);
+        var structs = curRoom.find(FIND_CONSTRUCTION_SITES, { filter: (structure) => { return (structure.structureType == STRUCTURE_ROAD); } })
+
+        console.log("Room '" + curRoom.name + "'Total unfinished roads: " + structs.length);
 
         for (i in structs) {
             //console.log("structs: '" + i + "'");
             //console.log(structs[i]); 
             //console.log("i: '"+structs[i]+"' - Remaining progress: '"+structs[i].progressTotal+"'");
-                
+
             //STRUCTURE_ROAD && ( s.progress < s.progressTotal )
-            
+
             var r = Game.getObjectById(structs[i].id);
-            if (r.id == "ea058d22e958ed3"){
-                console.log(r.id);
-            }
+            console.log("ID: '" + r.id);
+
         }
 
 
@@ -58,7 +57,7 @@ module.exports = {
                 return (s.structureType == STRUCTURE_CONTROLLER || s.structureType == STRUCTURE_EXTENSION || s.structureType == STRUCTURE_EXTRACTOR || s.structureType == STRUCTURE_LAB
                     || s.structureType == STRUCTURE_LINK || s.structureType == STRUCTURE_NUKER || s.structureType == STRUCTURE_SPAWN || s.structureType == STRUCTURE_STORAGE
                     || s.structureType == STRUCTURE_TERMINAL || s.structureType == STRUCTURE_TOWER || s.structureType == STRUCTURE_CONTAINER);
-            }            
+            }
         });
         var sources = curRoom.find(FIND_SOURCES);
 
