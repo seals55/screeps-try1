@@ -13,8 +13,9 @@ module.exports = {
             //STRUCTURE_ROAD && ( s.progress < s.progressTotal )
             
             var r = Game.getObjectById(structs[i].id);
-            console.log(r);
-            
+            if (r.id == "ea058d22e958ed3"){
+                console.log(r.id);
+            }
         }
 
 
