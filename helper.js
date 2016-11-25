@@ -12,7 +12,7 @@ module.exports = {
                 
             //STRUCTURE_ROAD && ( s.progress < s.progressTotal )
             
-            var r = Game.getObjectById(i.id)
+            var r = Game.getObjectById(i.id.name)
             console.log(r)
             
         }
