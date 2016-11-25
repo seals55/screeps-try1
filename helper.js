@@ -1,11 +1,7 @@
 module.exports = {
     removeUnfinishedRoads: function(curRoom) {        
         if (curRoom == null) { return false; }
-        var structs = curRoom.find(FIND_STRUCTURES, {
-            filter: (s) => {
-                return (s.structureType);                
-            }            
-        });        
+        var structs = curRoom.find(FIND_STRUCTURES, { filter: (structure) => { return (structure.structureType == STRUCTURE_ROAD); } })        
         
         console.log("Room '"+curRoom.name+"'Total unfinished roads: " + structs.length);
 
