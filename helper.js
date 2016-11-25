@@ -12,8 +12,8 @@ module.exports = {
                 
             //STRUCTURE_ROAD && ( s.progress < s.progressTotal )
             
-            var r = Game.getObjectById(i.id.name)
-            console.log(r)
+            var r = Game.getObjectById(structs[i].id);
+            if (r.progress){console.log(r)};
             
         }
 
