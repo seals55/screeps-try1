@@ -7,7 +7,7 @@ module.exports = {
             }            
         });        
         
-        console.log("Total unfinished roads: " + structs.length);
+        console.log("Room '"+curRoom.name+"'Total unfinished roads: " + structs.length);
 
         for (i in structs) {
             //console.log("structs: '" + i + "'");
