@@ -13,8 +13,9 @@ module.exports = {
                 if (rc == 0) {
                     console.log("Removed '" + r);
                 }
-            }
+            }            
         }
+        return true;
     },
 
     buildRoads: function(curRoom) {

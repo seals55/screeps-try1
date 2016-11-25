@@ -30,7 +30,7 @@ module.exports.loop = function () {
         //
         //
         //helper.buildRoads(curRoom);
-        helper.removeUnfinishedRoads(curRoom);
+        //helper.removeUnfinishedRoads(curRoom);
         //
         //        
         var multi = _.filter(Game.creeps, (creep) => creep.memory.role == 'multi' && curRoom.name == creep.room.name);
