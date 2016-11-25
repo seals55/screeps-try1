@@ -7,13 +7,14 @@ module.exports = {
             }
         });
         for (var i in structs) {
-            i.remove()
-
-            return true;
-        } else {
-            return false;
-        },
-
+            var rc = i.remove();
+            if (rc == 0) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    },
     buildRoads: function(curRoom) {
         /*
         + 	OwnedStructure 
@@ -33,11 +34,11 @@ module.exports = {
         � 	+ 	StructureTerminal --yes
         � 	+ 	StructureTower --yes
         + 	StructureContainer --yes
-      	+ 	StructurePortal  --no
-      	+ 	StructureRoad --no
-      	+ 	StructureWall --no
+            + 	StructurePortal  --no
+            + 	StructureRoad --no
+            + 	StructureWall --no
       	
-      	also include sources
+            also include sources
         */
         if (curRoom == null) { return false; }
         var structs = curRoom.find(FIND_STRUCTURES, {
