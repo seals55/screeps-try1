@@ -1,47 +1,27 @@
 module.exports = {
-    buildRoads: function(curRoom){
-        /*
-        + 	OwnedStructure 
-        ¦ 	+ 	StructureController --yes
-        ¦ 	+ 	StructureExtension --yes
-        ¦ 	+ 	StructureExtractor --yes
-        ¦ 	+ 	StructureKeeperLair --no
-        ¦ 	+ 	StructureLab --yes
-        ¦ 	+ 	StructureLink --yes
-        ¦ 	+ 	StructureNuker --yes
-        ¦ 	+ 	StructureObserver --no
-        ¦ 	+ 	StructurePowerBank --no
-        ¦ 	+ 	StructurePowerSpawn --no
-        ¦ 	+ 	StructureRampart --no
-        ¦ 	+ 	StructureSpawn --yes
-        ¦ 	+ 	StructureStorage --yes
-        ¦ 	+ 	StructureTerminal --yes
-        ¦ 	+ 	StructureTower --yes
-        + 	StructureContainer --yes
-      	+ 	StructurePortal  --no
-      	+ 	StructureRoad --no
-      	+ 	StructureWall --no
-      	
-      	also include sources
-        */
+    removeUnfinishedRoads: function (curRoom) {
         if (curRoom == null) { return false; }
-        var structs = curRoom.find(FIND_STRUCTURES, { filter: (s) => { return (s.structureType == STRUCTURE_CONTROLLER || s.structureType == STRUCTURE_EXTENSION || s.structureType == STRUCTURE_EXTRACTOR || s.structureType == STRUCTURE_LAB
-                                                                                 || s.structureType == STRUCTURE_LINK || s.structureType == STRUCTURE_NUKER || s.structureType == STRUCTURE_SPAWN || s.structureType == STRUCTURE_STORAGE
-                                                                                 || s.structureType == STRUCTURE_TERMINAL || s.structureType == STRUCTURE_TOWER || s.structureType == STRUCTURE_CONTAINER); } });
+        var structs = curRoom.find(FIND_STRUCTURES, {
+            filter: (s) => {
+                return (s.structureType == STRUCTURE_CONTROLLER || s.structureType == STRUCTURE_EXTENSION || s.structureType == STRUCTURE_EXTRACTOR || s.structureType == STRUCTURE_LAB
+                    || s.structureType == STRUCTURE_LINK || s.structureType == STRUCTURE_NUKER || s.structureType == STRUCTURE_SPAWN || s.structureType == STRUCTURE_STORAGE
+                    || s.structureType == STRUCTURE_TERMINAL || s.structureType == STRUCTURE_TOWER || s.structureType == STRUCTURE_CONTAINER);
+            }
+        });
         var sources = curRoom.find(FIND_SOURCES);
-    
+
         var positions = structs.concat(sources);
         //console.log(curRoom.name + ': '+ positions.length);
-        
+
         var randOne = Math.floor((Math.random() * positions.length) + 0);
         var randTwo = Math.floor((Math.random() * positions.length) + 0);
         //console.log(randOne + '    '+ randTwo)
-        if (randOne!=randTwo){
+        if (randOne != randTwo) {
             //console.log('1: '+positions[randOne] + ', 2: ' +positions[randTwo])
-            var path = curRoom.findPath(positions[randOne].pos,positions[randTwo].pos, {ignoreRoads: true, heuristicWeight: 1000});
-            for (var i in path){
-                var cons = curRoom.createConstructionSite(path[i].x,path[i].y,STRUCTURE_ROAD);
-                if (cons == ERR_FULL){
+            var path = curRoom.findPath(positions[randOne].pos, positions[randTwo].pos, { ignoreRoads: true, heuristicWeight: 1000 });
+            for (var i in path) {
+                var cons = curRoom.createConstructionSite(path[i].x, path[i].y, STRUCTURE_ROAD);
+                if (cons == ERR_FULL) {
                     break;
                 }
             }
@@ -49,7 +29,7 @@ module.exports = {
         } else {
             return false;
         }
-        
+
         /*for (var posOne in positions) {
             for (var posTwo in positions) {
                 if (posOne == posTwo) {
@@ -66,11 +46,84 @@ module.exports = {
                 }
             }
         }*/
-        
+
     },
-    maxCreep: function(curRoom,role){
-        var target = curRoom.find(FIND_STRUCTURES, { filter: (structure) => { return (structure.structureType == STRUCTURE_CONTROLLER ); } });
-        if (target[0]==null){ return false;}
+    buildRoads: function (curRoom) {
+        /*
+        + 	OwnedStructure 
+        ï¿½ 	+ 	StructureController --yes
+        ï¿½ 	+ 	StructureExtension --yes
+        ï¿½ 	+ 	StructureExtractor --yes
+        ï¿½ 	+ 	StructureKeeperLair --no
+        ï¿½ 	+ 	StructureLab --yes
+        ï¿½ 	+ 	StructureLink --yes
+        ï¿½ 	+ 	StructureNuker --yes
+        ï¿½ 	+ 	StructureObserver --no
+        ï¿½ 	+ 	StructurePowerBank --no
+        ï¿½ 	+ 	StructurePowerSpawn --no
+        ï¿½ 	+ 	StructureRampart --no
+        ï¿½ 	+ 	StructureSpawn --yes
+        ï¿½ 	+ 	StructureStorage --yes
+        ï¿½ 	+ 	StructureTerminal --yes
+        ï¿½ 	+ 	StructureTower --yes
+        + 	StructureContainer --yes
+      	+ 	StructurePortal  --no
+      	+ 	StructureRoad --no
+      	+ 	StructureWall --no
+      	
+      	also include sources
+        */
+        if (curRoom == null) { return false; }
+        var structs = curRoom.find(FIND_STRUCTURES, {
+            filter: (s) => {
+                return (s.structureType == STRUCTURE_CONTROLLER || s.structureType == STRUCTURE_EXTENSION || s.structureType == STRUCTURE_EXTRACTOR || s.structureType == STRUCTURE_LAB
+                    || s.structureType == STRUCTURE_LINK || s.structureType == STRUCTURE_NUKER || s.structureType == STRUCTURE_SPAWN || s.structureType == STRUCTURE_STORAGE
+                    || s.structureType == STRUCTURE_TERMINAL || s.structureType == STRUCTURE_TOWER || s.structureType == STRUCTURE_CONTAINER);
+            }
+        });
+        var sources = curRoom.find(FIND_SOURCES);
+
+        var positions = structs.concat(sources);
+        //console.log(curRoom.name + ': '+ positions.length);
+
+        var randOne = Math.floor((Math.random() * positions.length) + 0);
+        var randTwo = Math.floor((Math.random() * positions.length) + 0);
+        //console.log(randOne + '    '+ randTwo)
+        if (randOne != randTwo) {
+            //console.log('1: '+positions[randOne] + ', 2: ' +positions[randTwo])
+            var path = curRoom.findPath(positions[randOne].pos, positions[randTwo].pos, { ignoreRoads: true, heuristicWeight: 1000 });
+            for (var i in path) {
+                var cons = curRoom.createConstructionSite(path[i].x, path[i].y, STRUCTURE_ROAD);
+                if (cons == ERR_FULL) {
+                    break;
+                }
+            }
+            return true;
+        } else {
+            return false;
+        }
+
+        /*for (var posOne in positions) {
+            for (var posTwo in positions) {
+                if (posOne == posTwo) {
+                    //Build Road 1 block around structure
+                    //lookForAt
+                } else {
+                    var path = curRoom.findPath(posOne,posTwo, {ignoreRoads: true});
+                    console.log(path);
+                    if (path != null) {
+                        for (var i in path) {
+                            //var cons = curRoom.createConstructionSite(i.x,i.y,STRUCTURE_ROAD);
+                        }
+                    }
+                }
+            }
+        }*/
+
+    },
+    maxCreep: function (curRoom, role) {
+        var target = curRoom.find(FIND_STRUCTURES, { filter: (structure) => { return (structure.structureType == STRUCTURE_CONTROLLER); } });
+        if (target[0] == null) { return false; }
         switch (target[0].level) {
             case (0):
                 switch (role) {
@@ -97,10 +150,10 @@ module.exports = {
             case (1):
                 switch (role) {
                     case ('multi'):
-                            return 2;
+                        return 2;
                         break;
                     case ('repair'):
-                            return 4;
+                        return 4;
                         break;
                     case ('harvester'):
                         return 4;
@@ -122,7 +175,7 @@ module.exports = {
                         return 2;
                         break;
                     case ('repair'):
-                            return 4;
+                        return 4;
                         break;
                     case ('harvester'):
                         return 6;
@@ -191,10 +244,10 @@ module.exports = {
                         return 2;
                         break;
                     case ('harvester'):
-                            return 6;
+                        return 6;
                         break;
                     case ('upgrader'):
-                            return 6;
+                        return 6;
                         break;
                     case ('claimer'):
                         return 0;
@@ -210,10 +263,10 @@ module.exports = {
                         return 2;
                         break;
                     case ('repair'):
-                            return 2;
+                        return 2;
                         break;
                     case ('harvester'):
-                            return 3;
+                        return 3;
                         break;
                     case ('upgrader'):
                         return 5;
@@ -232,7 +285,7 @@ module.exports = {
                         return 2;
                         break;
                     case ('repair'):
-                            return 2;
+                        return 2;
                         break;
                     case ('harvester'):
                         return 5;
@@ -275,7 +328,7 @@ module.exports = {
                 break;
         }
     },
-    maxEnergy: function(curRoom) {
+    maxEnergy: function (curRoom) {
         try {
             var targets = curRoom.find(FIND_STRUCTURES, { filter: (structure) => { return (structure.structureType == STRUCTURE_SPAWN || structure.structureType == STRUCTURE_EXTENSION); } });
             var total = 0
@@ -288,7 +341,7 @@ module.exports = {
             return false;
         }
     },
-    curEnergy: function(curRoom) {
+    curEnergy: function (curRoom) {
         try {
             var targets = curRoom.find(FIND_STRUCTURES, { filter: (structure) => { return (structure.structureType == STRUCTURE_SPAWN || structure.structureType == STRUCTURE_EXTENSION); } });
             var total = 0
@@ -301,7 +354,7 @@ module.exports = {
             return false;
         }
     },
-    calcBody: function(curRoom, role) {
+    calcBody: function (curRoom, role) {
         try {
             // lvl 1:  300
             // lvl 2:  550
@@ -399,7 +452,7 @@ module.exports = {
         }
     },
 
-    routeCreep: function(creep, dest) {
+    routeCreep: function (creep, dest) {
         if (creep.fatigue > 0) { return -1; }
         if (typeof dest == "undefined") { return -1; }
 
@@ -464,7 +517,7 @@ module.exports = {
         return error;
     },
 
-    pathisBlocked: function(position, dir) {
+    pathisBlocked: function (position, dir) {
         switch (dir) {
             case (1)://top
                 position.y -= 1;
@@ -506,7 +559,7 @@ module.exports = {
 
     },
 
-    isEnterable: function(pos) {
+    isEnterable: function (pos) {
         var atPos = pos.look();
         var SWAMP = "swamp";
         var PLAIN = "plain";
