@@ -6,16 +6,19 @@ module.exports = {
                 return (s.structureType == STRUCTURE_ROAD);
             }
         });
-        
-        console.log(structs);
-        
-            // var rc = structs[0].remove();
-            // if (rc == 0) {
-            //     return true;
-            // } else {
-            //     return false;
-            // }
-        
+
+        for (i in structs) {
+            console.log("structs: '" + i + "'");
+        }
+
+
+        // var rc = structs[0].remove();
+        // if (rc == 0) {
+        //     return true;
+        // } else {
+        //     return false;
+        // }
+
     },
     buildRoads: function(curRoom) {
         /*
