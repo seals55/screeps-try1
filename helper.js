@@ -7,12 +7,14 @@ module.exports = {
             }
         });
         
-            var rc = structs[0].remove();
-            if (rc == 0) {
-                return true;
-            } else {
-                return false;
-            }
+        console.log(structs);
+        
+            // var rc = structs[0].remove();
+            // if (rc == 0) {
+            //     return true;
+            // } else {
+            //     return false;
+            // }
         
     },
     buildRoads: function(curRoom) {
