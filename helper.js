@@ -3,9 +3,7 @@ module.exports = {
         if (curRoom == null) { return false; }
         var structs = curRoom.find(FIND_STRUCTURES, {
             filter: (s) => {
-                return (s.structureType == STRUCTURE_CONTROLLER || s.structureType == STRUCTURE_EXTENSION || s.structureType == STRUCTURE_EXTRACTOR || s.structureType == STRUCTURE_LAB
-                    || s.structureType == STRUCTURE_LINK || s.structureType == STRUCTURE_NUKER || s.structureType == STRUCTURE_SPAWN || s.structureType == STRUCTURE_STORAGE
-                    || s.structureType == STRUCTURE_TERMINAL || s.structureType == STRUCTURE_TOWER || s.structureType == STRUCTURE_CONTAINER);
+                return (s.structureType == STRUCTURE_ROAD);
             }
         });
         var sources = curRoom.find(FIND_SOURCES);
