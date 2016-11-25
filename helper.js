@@ -3,7 +3,7 @@ module.exports = {
         if (curRoom == null) { return false; }
         var structs = curRoom.find(FIND_STRUCTURES, {
             filter: (s) => {
-                return (s.structureType == STRUCTURE_ROAD && ( s.progress < s.progressTotal ) );                
+                return (s.structureType);                
             }            
         });        
         
@@ -11,7 +11,8 @@ module.exports = {
 
         for (i in structs) {
             //console.log("structs: '" + i + "'");
-            //console.log(structs[i]);            
+            //console.log(structs[i]); 
+            //STRUCTURE_ROAD && ( s.progress < s.progressTotal )
         }
 
 
