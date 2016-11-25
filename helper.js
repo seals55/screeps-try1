@@ -9,6 +9,7 @@ module.exports = {
 
         for (i in structs) {
             console.log("structs: '" + i + "'");
+            console.log(structs[i]);
         }
 
 
