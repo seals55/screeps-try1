@@ -6,26 +6,17 @@ module.exports = {
         console.log("Room '" + curRoom.name + "'Total unfinished roads: " + structs.length);
 
         for (i in structs) {
-            //console.log("structs: '" + i + "'");
-            //console.log(structs[i]); 
-            //console.log("i: '"+structs[i]+"' - Remaining progress: '"+structs[i].progressTotal+"'");
-
-            //STRUCTURE_ROAD && ( s.progress < s.progressTotal )
-
             var r = Game.getObjectById(structs[i].id);
-            console.log("ID: '" + r.id +"' | progressTotal: '"+r.progressTotal+"' | progress: '"+r.progress+"' | Percent: "+r.progress/r.progressTotal);
-
+            //console.log("ID: '" + r.id +"' | progressTotal: '"+r.progressTotal+"' | progress: '"+r.progress+"' | Percent: "+r.progress/r.progressTotal);
+            if (r.progress < r.progressTotal) {
+                var rc = r.remove()
+                if (rc == 0) {
+                    console.log("Removed '" + r);
+                }
+            }
         }
-
-
-        // var rc = structs[0].remove();
-        // if (rc == 0) {
-        //     return true;
-        // } else {
-        //     return false;
-        // }
-
     },
+
     buildRoads: function(curRoom) {
         /*
         + 	OwnedStructure 
