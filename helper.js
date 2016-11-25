@@ -1,15 +1,15 @@
 module.exports = {
-    removeUnfinishedRoads: function(curRoom) {
+    removeUnfinishedRoads: function(curRoom) {        
         if (curRoom == null) { return false; }
         var structs = curRoom.find(FIND_STRUCTURES, {
             filter: (s) => {
-                return (s.structureType == STRUCTURE_ROAD);
-            }
-        });
+                return (s.structureType == STRUCTURE_ROAD );                
+            }            
+        });        
 
         for (i in structs) {
-            console.log("structs: '" + i + "'");
-            console.log(structs[i]);
+            //console.log("structs: '" + i + "'");
+            //console.log(structs[i]);            
         }
 
 
@@ -43,7 +43,7 @@ module.exports = {
             + 	StructurePortal  --no
             + 	StructureRoad --no
             + 	StructureWall --no
-      	
+      	          
             also include sources
         */
         if (curRoom == null) { return false; }
@@ -52,7 +52,7 @@ module.exports = {
                 return (s.structureType == STRUCTURE_CONTROLLER || s.structureType == STRUCTURE_EXTENSION || s.structureType == STRUCTURE_EXTRACTOR || s.structureType == STRUCTURE_LAB
                     || s.structureType == STRUCTURE_LINK || s.structureType == STRUCTURE_NUKER || s.structureType == STRUCTURE_SPAWN || s.structureType == STRUCTURE_STORAGE
                     || s.structureType == STRUCTURE_TERMINAL || s.structureType == STRUCTURE_TOWER || s.structureType == STRUCTURE_CONTAINER);
-            }
+            }            
         });
         var sources = curRoom.find(FIND_SOURCES);
 
