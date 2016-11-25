@@ -8,7 +8,7 @@ module.exports = {
         for (i in structs) {
             //console.log("structs: '" + i + "'");
             //console.log(structs[i]); 
-            console.log("i: '"+structs[i]+"' - Remaining progress: '"+structs[i].progressTotal+"'");
+            //console.log("i: '"+structs[i]+"' - Remaining progress: '"+structs[i].progressTotal+"'");
                 
             //STRUCTURE_ROAD && ( s.progress < s.progressTotal )
         }
