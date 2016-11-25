@@ -7,10 +7,7 @@ module.exports = {
             }
         });
         for (var i in structs) {
-                var cons = curRoom.createConstructionSite(path[i].x, path[i].y, STRUCTURE_ROAD);
-                if (cons == ERR_FULL) {
-                    break;
-                }
+            i.remove()
             }
             return true;
         } else {
