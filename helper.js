@@ -11,6 +11,10 @@ module.exports = {
             //console.log("i: '"+structs[i]+"' - Remaining progress: '"+structs[i].progressTotal+"'");
                 
             //STRUCTURE_ROAD && ( s.progress < s.progressTotal )
+            
+            var r = Game.getObjectById(i.id)
+            console.log(r)
+            
         }
 
 
