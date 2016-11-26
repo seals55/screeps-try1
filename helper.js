@@ -18,39 +18,38 @@ module.exports = {
         return true;
     },
 
-    buildRoads: function(curRoom) {
+    buildRoads: function(curRoom){
         /*
-        + 	OwnedStructure 
-        � 	+ 	StructureController --yes
-        � 	+ 	StructureExtension --yes
-        � 	+ 	StructureExtractor --yes
-        � 	+ 	StructureKeeperLair --no
-        � 	+ 	StructureLab --yes
-        � 	+ 	StructureLink --yes
-        � 	+ 	StructureNuker --yes
-        � 	+ 	StructureObserver --no
-        � 	+ 	StructurePowerBank --no
-        � 	+ 	StructurePowerSpawn --no
-        � 	+ 	StructureRampart --no
-        � 	+ 	StructureSpawn --yes
-        � 	+ 	StructureStorage --yes
-        � 	+ 	StructureTerminal --yes
-        � 	+ 	StructureTower --yes
-        + 	StructureContainer --yes
-            + 	StructurePortal  --no
-            + 	StructureRoad --no
-            + 	StructureWall --no
-      	          
-            also include sources
+        ├ 	OwnedStructure 
+        │ 	├ 	StructureController --yes
+        │ 	├ 	StructureExtension --yes
+        │ 	├ 	StructureExtractor --yes
+        │ 	├ 	StructureKeeperLair --no
+        │ 	├ 	StructureLab --yes
+        │ 	├ 	StructureLink --yes
+        │ 	├ 	StructureNuker --yes
+        │ 	├ 	StructureObserver --no
+        │ 	├ 	StructurePowerBank --no
+        │ 	├ 	StructurePowerSpawn --no
+        │ 	├ 	StructureRampart --no
+        │ 	├ 	StructureSpawn --yes
+        │ 	├ 	StructureStorage --yes
+        │ 	├ 	StructureTerminal --yes
+        │ 	└ 	StructureTower --yes
+        ├ 	StructureContainer --yes
+      	├ 	StructurePortal  --no
+      	├ 	StructureRoad --no
+      	└ 	StructureWall --no
+      	
+      	also include sources
         */
         if (curRoom == null) { return false; }
-        var structs = curRoom.find(FIND_STRUCTURES, {
-            filter: (s) => {
-                return (s.structureType == STRUCTURE_CONTROLLER || s.structureType == STRUCTURE_EXTENSION || s.structureType == STRUCTURE_EXTRACTOR || s.structureType == STRUCTURE_LAB
-                    || s.structureType == STRUCTURE_LINK || s.structureType == STRUCTURE_NUKER || s.structureType == STRUCTURE_SPAWN || s.structureType == STRUCTURE_STORAGE
-                    || s.structureType == STRUCTURE_TERMINAL || s.structureType == STRUCTURE_TOWER || s.structureType == STRUCTURE_CONTAINER);
-            }
-        });
+        var structs = curRoom.find(FIND_STRUCTURES, { filter: (s) => { return (s.structureType == STRUCTURE_CONTROLLER || s.structureType == STRUCTURE_EXTENSION || s.structureType == STRUCTURE_EXTRACTOR || s.structureType == STRUCTURE_LAB
+                                                                                 || s.structureType == STRUCTURE_LINK || s.structureType == STRUCTURE_NUKER || s.structureType == STRUCTURE_SPAWN || s.structureType == STRUCTURE_STORAGE
+                                                                                 || s.structureType == STRUCTURE_TERMINAL || s.structureType == STRUCTURE_TOWER || s.structureType == STRUCTURE_CONTAINER); } });
+        if (structs.length == 1) {
+            return false;
+        }
         var sources = curRoom.find(FIND_SOURCES);
 
         var positions = structs.concat(sources);
