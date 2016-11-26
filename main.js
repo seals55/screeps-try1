@@ -15,9 +15,6 @@ module.exports.loop = function () {
         if(!Game.creeps[name]) { delete Memory.creeps[name]; } 
     }
 
-    // if (debug) {
-    //     console.log("Debug: " + debug + " : " + "maxMulti: " + maxMulti + " : " + "maxRepair: " + maxRepair + " : " + "maxHarvester:" + maxHarvester + " : " + "maxUpgrader:" + maxUpgrader);
-    // };
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////
     //Loop rooms
@@ -46,6 +43,15 @@ module.exports.loop = function () {
                 LogOut = LogOut + 'Multi:' + multi.length + '/' + helper.maxCreep(curRoom, 'multi') + ', Harvester:' + harvester.length + '/' + helper.maxCreep(curRoom, 'harvester') + ', Repair:' + repair.length + '/' + helper.maxCreep(curRoom, 'repair') + ', Upgrader:' + upgrader.length + '/' + helper.maxCreep(curRoom, 'upgrader') + ', Claimer:' + claimer.length + '/' + helper.maxCreep(curRoom, 'claimer') + ', Total Creeps:' + _.filter(Game.creeps, (creep) => curRoom.name == creep.room.name).length;
 
                 console.log(LogOut);
+            
+            var creepType = '';
+            var cnt = 0;
+            
+            if(multi.length < helper.maxCreep(curRoom,'multi')) { creepType = 'multi';
+            } else if(harvester.length < helper.maxCreep(curRoom,'harvester')) { creepType = 'harvester';
+            } else if(repair.length < helper.maxCreep(curRoom,'repair')) { creepType = 'repair';
+            } else if(upgrader.length < helper.maxCreep(curRoom,'upgrader')) { creepType = 'upgrader';
+            } else if(claimer.length < helper.maxCreep(curRoom,'claimer')) { creepType = 'claimer';
             }
             if (multi.length < helper.maxCreep(curRoom, 'multi')) {
                 var newName = spawn[0].createCreep(helper.calcBody(curRoom, 'role.multi'), undefined, { role: 'multi' });
