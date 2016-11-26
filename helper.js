@@ -2,9 +2,7 @@ module.exports = {
     removeUnfinishedRoads: function(curRoom) {
         if (curRoom == null) { return false; }
         var structs = curRoom.find(FIND_CONSTRUCTION_SITES, { filter: (structure) => { return (structure.structureType == STRUCTURE_ROAD); } })
-
         console.log("Room '" + curRoom.name + "'Total unfinished roads: " + structs.length);
-
         for (i in structs) {
             var r = Game.getObjectById(structs[i].id);
             //console.log("ID: '" + r.id +"' | progressTotal: '"+r.progressTotal+"' | progress: '"+r.progress+"' | Percent: "+r.progress/r.progressTotal);
@@ -17,7 +15,6 @@ module.exports = {
         }
         return true;
     },
-
     buildRoads: function(curRoom){
         /*
         ├ 	OwnedStructure 
@@ -184,11 +181,11 @@ module.exports = {
                             break;
                         case ('repair'):
                         return 4;
-                        break;
-                    case ('harvester'):
+                            break;
+                        case ('harvester'):
                         return 5;
-                        break;
-                    case ('upgrader'):
+                            break;
+                        case ('upgrader'):
                         return 5;
                             break;
                         case ('claimer'):
