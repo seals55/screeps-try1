@@ -111,7 +111,7 @@ var roleMulti = {
             //Harvesting complete.  Reinit and distribute to task
             creep.memory.working = true;
             creep.memory.harSource = -1;
-
+            
             /////////////////////////////////////////////////////////////////////////////////////////////////////////
             //Search for structure with less then max energy
             //fill tower first only if <= 200 energy            
@@ -138,13 +138,10 @@ var roleMulti = {
                     filter: (structure) => {
                         return (structure.structureType == STRUCTURE_TOWER)
                             && (structure.energy < structure.energyCapacity);
-
                     }
                 });
                 // if (vars.debug) { console.log("3. Harvester target: " + target) };
             }
-
-
                                                             //structure.store[RESOURCE_ENERGY] < structure.storeCapacity
             if(target == null) {
                 target = creep.pos.findClosestByRange(FIND_STRUCTURES, { filter: (structure) => { return structure.structureType == STRUCTURE_STORAGE && _.sum(structure.store) < structure.storeCapacity; } });
