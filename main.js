@@ -29,8 +29,8 @@ module.exports.loop = function () {
         var spawn = curRoom.find(FIND_STRUCTURES, {filter: { structureType: STRUCTURE_SPAWN } })
         //
         //
-        helper.buildRoads(curRoom);
-        //helper.removeUnfinishedRoads(curRoom);
+        //helper.buildRoads(curRoom);
+        helper.removeUnfinishedRoads(curRoom);
         //
         //        
         var multi = _.filter(Game.creeps, (creep) => creep.memory.role == 'multi' && curRoom.name == creep.room.name);
