@@ -103,8 +103,8 @@ var roleMulti = {
             });
             // if (vars.debug) { console.log("1. Harvester target: " + target) };
             if (!target) {
-                var target = creep.pos.findClosestByRange(FIND_STRUCTURES, {
-                    filter: (structure) => {
+                var target = creep.pos.findClosestByRange(FIND_STRUCTURES, {                    filter: (structure) => 
+		{
                         return (structure.structureType == STRUCTURE_EXTENSION
                             || structure.structureType == STRUCTURE_SPAWN
                             || structure.structureType == STRUCTURE_CONTAINER)
