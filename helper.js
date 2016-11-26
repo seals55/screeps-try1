@@ -62,9 +62,26 @@ module.exports = {
             //console.log('1: '+positions[randOne] + ', 2: ' +positions[randTwo])
             var path = curRoom.findPath(positions[randOne].pos, positions[randTwo].pos, { ignoreRoads: true, heuristicWeight: 1000 });
             for (var i in path) {
+                var strucs = curRoom.lookForAt(LOOK_STRUCTURES, path[i].x,path[i].y)
+                var consites = curRoom.lookForAt(LOOK_CONSTRUCTION_SITES,path[i].x,path[i].y)
+                //console.log('structs: '+ strucs + '  cons:' + consites)
+                if (strucs.length==0 && consites.length==0){
                 var cons = curRoom.createConstructionSite(path[i].x, path[i].y, STRUCTURE_ROAD);
                 if (cons == ERR_FULL) {
                     break;
+                    }
+                } else {
+                    var target = curRoom.find(FIND_STRUCTURES, { filter: (s) => { return (s.pos.x == path[i].x && s.pos.y == path[i].y ); } });
+                    if (target.length>1){
+                        for (var t in target) {
+                            if(target[t].structureType == STRUCTURE_ROAD){ 
+                                console.log('Destroying road @ '+ curRoom.name + ': ' +path[i].x+','+path[i].y);
+                                target[t].destroy();
+                            }
+                        }
+                    }
+                    
+                    return false;
                 }
             }
             return true;
@@ -371,7 +388,15 @@ module.exports = {
                 ['role.upgrader', 1800, [MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY]],
                 ['role.upgrader', 2300, [MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY]],
                 ['role.upgrader', 3100, [MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY]],
-                ['role.upgrader', 3900, [MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY]]
+                	            ['role.upgrader',3900,[MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY]],
+                	            ['role.claimer',300,[CLAIM,CLAIM,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE]],
+                	            ['role.claimer',550,[CLAIM,CLAIM,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE]],
+                	            ['role.claimer',800,[CLAIM,CLAIM,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE]],
+                	            ['role.claimer',1300,[CLAIM,CLAIM,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE]],
+                	            ['role.claimer',1800,[CLAIM,CLAIM,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE]],
+                	            ['role.claimer',2300,[CLAIM,CLAIM,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE]],
+                	            ['role.claimer',3100,[CLAIM,CLAIM,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE]],
+                	            ['role.claimer',3900,[CLAIM,CLAIM,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE]]
             ];
             var upgradeRow = 0;
             switch (true) {
@@ -556,5 +581,8 @@ module.exports = {
             }
         }
         return true;
+    },
+    toTitleCase: function (str) {
+        return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
     }
 };
