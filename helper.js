@@ -315,7 +315,8 @@ module.exports = {
         }
     },
     maxEnergy: function(curRoom) {
-        try {
+		try
+		{
             var targets = curRoom.find(FIND_STRUCTURES, { filter: (structure) => { return (structure.structureType == STRUCTURE_SPAWN || structure.structureType == STRUCTURE_EXTENSION); } });
             var total = 0
             for (i = 0; i < targets.length; i++) {
@@ -323,12 +324,14 @@ module.exports = {
             }
             return total;
         }
-        catch (e) {
+		catch(e)
+		{
             return false;
         }
     },
     curEnergy: function(curRoom) {
-        try {
+		try
+		{
             var targets = curRoom.find(FIND_STRUCTURES, { filter: (structure) => { return (structure.structureType == STRUCTURE_SPAWN || structure.structureType == STRUCTURE_EXTENSION); } });
             var total = 0
             for (i = 0; i < targets.length; i++) {
@@ -336,12 +339,14 @@ module.exports = {
             }
             return total;
         }
-        catch (e) {
+		catch(e)
+		{
             return false;
         }
     },
     calcBody: function(curRoom, role) {
-        try {
+		try
+		{
             // lvl 1:  300
             // lvl 2:  550
             // lvl 3:  800
@@ -441,7 +446,8 @@ module.exports = {
 
             return bodyParts;
         }
-        catch (e) {
+		catch(e)
+		{
             return false;
         }
     },
@@ -557,7 +563,8 @@ module.exports = {
         var atPos = pos.look();
         var SWAMP = "swamp";
         var PLAIN = "plain";
-        for (var i = 0; i < atPos.length; i++) {
+            for ( var i = 0 ; i < atPos.length ; i++ )
+            {
             switch (atPos[i].type) {
                 case LOOK_TERRAIN:
                     if (atPos[i].terrain != PLAIN && atPos[i].terrain != SWAMP)
