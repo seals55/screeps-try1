@@ -6,7 +6,6 @@ var roleHarvester = require('role.harvester');
 var roleUpgrader = require('role.upgrader');
 var newCostMatrix = require('newCostMatrix');
 var roleClaimer = require('role.claimer');
-var vars = require('vars');
 
 var tower = require('tower');
 
