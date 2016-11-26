@@ -57,17 +57,16 @@ var roleMulti = {
             }
             /////////////////////////////////////////////////////////////////////////////////////////////////////////
             //Send creep to source
-            if (sourceFound == true) {
-                if (creep.harvest(sources[creep.memory.harSource]) == ERR_NOT_IN_RANGE) {
-                    //helper.routeCreep(creep, sources[creep.memory.harSource]);
+            if(sourceFound == true) {
+                if(creep.harvest(sources[creep.memory.harSource]) == ERR_NOT_IN_RANGE) {
                     creep.moveTo(sources[creep.memory.harSource]);
                     //creep.say('move to ' + creep.memory.harSource)
                 }
             } else if (creep.carry.energy == 0) {
                 //move to bored flag
-                console.log(creep.room.name + ' Multi moving to bored')
-                for (var flag in Game.flags) {
-                    if (Game.flags[flag].pos.roomName == creep.room.name && creep.room.name.substring(0, 5) == 'Bored') {
+                //console.log(creep.room.name + ' Multi moving to bored')
+                for (var flag in Game.flags){
+                    if (Game.flags[flag].pos.roomName == creep.room.name && creep.room.name.substring(0,5) == 'Bored') {
                         creep.moveTo(Game.flags[flag]);
                         break;
                     }
@@ -77,27 +76,26 @@ var roleMulti = {
                 creep.memory.working = true;
                 creep.memory.harSource = -1;
             }
-
+            
         } else {
             /////////////////////////////////////////////////////////////////////////////////////////////////////////
             //Harvesting complete.  Reinit and distribute to task
             creep.memory.working = true;
             creep.memory.harSource = -1;
-
+            
             /////////////////////////////////////////////////////////////////////////////////////////////////////////
             //Search for structure with less then max energy
             //////pos.findClosestByPath //creep.room.find
-            var target = creep.pos.findClosestByRange(FIND_STRUCTURES, {
-                filter: (structure) => {
-                    return (structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_SPAWN || structure.structureType == STRUCTURE_CONTAINER || structure.structureType == STRUCTURE_TOWER) &&
-                        structure.energy < structure.energyCapacity;
-                }
-            });
-            if (target != null) {
+            var target = creep.pos.findClosestByRange(FIND_STRUCTURES, { filter: (structure) => 
+                                                                {
+                                                                    return (structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_SPAWN || structure.structureType == STRUCTURE_CONTAINER || structure.structureType == STRUCTURE_TOWER ) &&
+                                                                    structure.energy < structure.energyCapacity;
+                                                                }
+                                                            });
+            if(target != null) {
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////
                 //Structures found, deposit energy
-                if (creep.transfer(target, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                    //helper.routeCreep(creep, target);
+                if(creep.transfer(target, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                     creep.moveTo(target);
                 }
             } else {
@@ -106,18 +104,17 @@ var roleMulti = {
                 var targetTwo = creep.pos.findClosestByPath(FIND_CONSTRUCTION_SITES, { filter: (s) => s.structureType != STRUCTURE_ROAD });
                 if (targetTwo == null) {
                     // find closest constructionSite
-                    var targetTwo = creep.pos.findClosestByRange(FIND_CONSTRUCTION_SITES);
+                var targetTwo = creep.pos.findClosestByRange(FIND_CONSTRUCTION_SITES);
                 }
-                if (creep.build(targetTwo) == ERR_NOT_IN_RANGE) {
+                if(creep.build(targetTwo) == ERR_NOT_IN_RANGE)
+                {
                     /////////////////////////////////////////////////////////////////////////////////////////////////////////
                     //Buildable structures found, deploy
-                    //helper.routeCreep(creep, targetTwo);
                     creep.moveTo(targetTwo);
-                } else if (creep.upgradeController(creep.room.controller) == ERR_NOT_IN_RANGE) {
+                } else if(creep.upgradeController(creep.room.controller) == ERR_NOT_IN_RANGE) {
                     /////////////////////////////////////////////////////////////////////////////////////////////////////////
                     //No other actions, upgrade controller, if energy is full
-                    if (creep.carry.energy == creep.carryCapacity) {
-                        //helper.routeCreep(creep, creep.room.controller);
+                    if(creep.carry.energy == creep.carryCapacity){
                         creep.moveTo(creep.room.controller);
                     } else {
                         creep.memory.working = false;
