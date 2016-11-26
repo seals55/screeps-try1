@@ -29,7 +29,7 @@ module.exports.loop = function () {
         var spawn = curRoom.find(FIND_STRUCTURES, {filter: { structureType: STRUCTURE_SPAWN } })
         //
         //
-        //helper.buildRoads(curRoom);
+        helper.buildRoads(curRoom);
         //helper.removeUnfinishedRoads(curRoom);
         //
         //        
